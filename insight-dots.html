@@ -1,112 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insight Dots - Data Visualization Platform | Arden Kim</title>
+    <title>AI 기반 프로젝트 | Sunmin Kim</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="dark-mode">
+<body>
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="index.html" class="logo">Arden Kim.</a>
+            <a href="index.html" class="logo">Sunmin Kim.</a>
             <ul class="nav-links">
-                <li><a href="index.html#work">Work</a></li>
-                <li><a href="index.html#about">About Me</a></li>
+                <li><a href="index.html#work">Projects</a></li>
+                <li><a href="index.html#about">About me</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Project Hero -->
-    <section class="project-hero">
-        <div class="project-hero-content">
-            <div class="project-meta">
-                <a href="index.html#work" class="back-link">← Back to Work</a>
-                <span class="project-category">#Data Visualization</span>
-            </div>
-            <h1>Insight Dots</h1>
-            <p class="project-subtitle">A comprehensive data visualization platform that transforms complex datasets into interactive, accessible insights for decision makers across various industries.</p>
-            <div class="project-image-hero">
-                <img src="./insight-dots.png" alt="Insight Dots Platform Overview">
-            </div>
-        </div>
-    </section>
+    <div class="project-container">
+        <aside class="in-page-nav">
+            <ul>
+                <li><a href="#project-list">AI 프로젝트 목록</a></li>
+                <li><a href="#results">성과</a></li>
+            </ul>
+        </aside>
 
-    <!-- Project Details -->
-    <section class="project-details">
-        <div class="project-content">
-            <div class="project-overview">
-                <h2>Project Overview</h2>
-                <p>Insight Dots is a data visualization platform designed to help organizations make sense of their complex data through intuitive, interactive dashboards. The project focused on creating a user-friendly interface that allows non-technical users to explore data and generate meaningful insights without requiring advanced analytics skills.</p>
-                
-                <div class="project-specs">
-                    <div class="spec-item">
-                        <h3>Role</h3>
-                        <p>Lead UX Designer</p>
+        <main class="project-main-content">
+            <!-- Project Hero -->
+            <section class="project-hero">
+                <div class="project-hero-content">
+                    <div class="project-meta">
+                        <a href="index.html#work" class="back-link">← 홈으로</a>
                     </div>
-                    <div class="spec-item">
-                        <h3>Duration</h3>
-                        <p>6 months</p>
+                    <h1>AI-Side Projects</h1>
+                    <p class="project-subtitle">AI를 활용한 다양한 사이드 프로젝트들을 통해 실제 사용자의 문제를 해결하는 도구를 개발하고 배포합니다. CLI툴을 통해 빠른 MVP 개발 및 아이디어를 실제 서비스로 구현하는 경험을 쌓고 있습니다.</p>
+                </div>
+            </section>
+
+            <!-- Project Details -->
+            <section class="project-details">
+                <div class="project-content">
+                    <div class="project-overview">
+                        
+                        <div class="project-specs">
+                            <div class="spec-item">
+                                <h3>역할</h3>
+                                <p>기획, 개발, 배포</p>
+                            </div>
+                            <div class="spec-item">
+                                <h3>기간</h3>
+                                <p>2024.02-</p>
+                            </div>
+                            <div class="spec-item">
+                                <h3>도구</h3>
+                                <p>VSCode<br>Claude CLI<br>Git / Github<br>Vercel<br>Gemini</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="spec-item">
-                        <h3>Team</h3>
-                        <p>2 Designers, 3 Developers, 1 Data Analyst</p>
+
+                    <div id="project-list" class="project-section">
+                        <h2>AI 프로젝트 목록</h2>
+                        <div class="sub-projects-grid">
+                            <div class="sub-project-card">
+                                <div class="sub-project-image">
+                                    <img src="./project1-thumb.jpg" alt="프로젝트 1">
+                                </div>
+                                <div class="sub-project-info">
+                                    <h3>AI 기반 자료 검색 서비스</h3>
+                                    <p>AI를 활용한 스마트 자료 검색 및 분류 시스템</p>
+                                    <span class="project-status">개발 완료</span>
+                                </div>
+                            </div>
+                            <div class="sub-project-card">
+                                <div class="sub-project-image">
+                                    <img src="./project2-thumb.jpg" alt="프로젝트 2">
+                                </div>
+                                <div class="sub-project-info">
+                                    <h3>맞춤형 추천 시스템</h3>
+                                    <p>사용자 패턴 분석을 통한 개인화 추천 엔진</p>
+                                    <span class="project-status">진행 중</span>
+                                </div>
+                            </div>
+                            <div class="sub-project-card">
+                                <div class="sub-project-image">
+                                    <img src="./project3-thumb.jpg" alt="프로젝트 3">
+                                </div>
+                                <div class="sub-project-info">
+                                    <h3>AI 페르소나 생성기</h3>
+                                    <p>GPT 기반 사용자 페르소나 생성 및 분석 도구</p>
+                                    <span class="project-status">기획 단계</span>
+                                </div>
+                            </div>
+                            <div class="sub-project-card">
+                                <div class="sub-project-image">
+                                    <img src="./project4-thumb.jpg" alt="프로젝트 4">
+                                </div>
+                                <div class="sub-project-info">
+                                    <h3>Vibe Coding 도구</h3>
+                                    <p>빠른 프로토타이핑을 위한 AI 코딩 어시스턴트</p>
+                                    <span class="project-status">테스트 중</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="spec-item">
-                        <h3>Tools</h3>
-                        <p>Figma, D3.js, Miro, UserTesting</p>
+
+                    <div id="results" class="project-section">
+                        <h2>성과</h2>
+                        <p>다양한 AI 도구를 활용하여 아이디어를 실제 서비스로 구현하는 사이클을 과정에서 배우고 있습니다. 특히 빠른 MVP 개발과 사용자 피드백 수집을 통해 제품 개발 역량을 향상시키고 있습니다.</p>
+                    </div>
+
+                    <div class="project-navigation">
+                        <a href="starbucks.html" class="nav-project prev">
+                            <span>이전 프로젝트</span>
+                            <h3>← 스타벅스 App Redesign</h3>
+                        </a>
+                        <a href="brainmate.html" class="nav-project">
+                            <span>다음 프로젝트</span>
+                            <h3>BrainMate →</h3>
+                        </a>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="project-section">
-                <h2>Problem Statement</h2>
-                <p>Organizations struggled with making data-driven decisions due to complex analytics tools that required technical expertise. Business users needed a way to explore data independently without relying on data teams for every insight.</p>
-            </div>
-
-            <div class="project-section">
-                <h2>Solution</h2>
-                <p>Developed an intuitive drag-and-drop interface that allows users to create custom visualizations, apply filters, and share insights seamlessly. The platform democratizes data access while maintaining enterprise-level security and performance.</p>
-            </div>
-
-            <div class="project-section">
-                <h2>Key Features</h2>
-                <ul class="feature-list">
-                    <li>Drag-and-drop visualization builder</li>
-                    <li>Real-time collaborative dashboards</li>
-                    <li>Smart data suggestions and auto-insights</li>
-                    <li>Interactive filtering and drill-down capabilities</li>
-                    <li>Custom reporting and scheduled exports</li>
-                    <li>Mobile-responsive design for on-the-go access</li>
-                </ul>
-            </div>
-
-            <div class="project-section">
-                <h2>Impact</h2>
-                <p>The platform reduced time-to-insight by 60% and increased data adoption across non-technical teams by 140%. User satisfaction scores improved significantly, with 89% of users rating the platform as "easy to use" compared to previous tools.</p>
-            </div>
-
-            <div class="project-navigation">
-                <a href="hanacard.html" class="nav-project prev">
-                    <span>Previous Project</span>
-                    <h3>← Hanacard Main Feature</h3>
-                </a>
-                <a href="job-hunter.html" class="nav-project">
-                    <span>Next Project</span>
-                    <h3>Job Hunter →</h3>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 Arden Kim • Built with care</p>
-    </footer>
+            <footer>
+                <p>© 2025 Sunmin Kim • Built with care</p>
+            </footer>
+        </main>
+    </div>
 
     <script src="./script.js"></script>
 </body>

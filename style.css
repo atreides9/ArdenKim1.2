@@ -1,9 +1,12 @@
 /* Base Styles */
 :root {
-    --bg-color: #efefef;
-    --text-color: #222222;
+    --bg-color: #fafafa;
+    --text-color: #1a1a1a;
+    --text-secondary: #4a4a4a;
     --accent-color: #FF6B6B;
     --secondary-color: #4ECDC4;
+    --border-color: #e5e5e5;
+    --card-bg: #ffffff;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* Dark mode variables for project pages */
@@ -22,29 +25,44 @@
 }
 
 body {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Pretendard', 'Noto Sans KR', 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
 }
 
 
 /* Typography */
 h1 {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 1rem 0;
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 1.5rem 0;
+    letter-spacing: -0.02em;
 }
 
 h2 {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: -0.01em;
 }
 
 h3 {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    font-weight: 500;
     margin: 2rem 0 1rem;
+    letter-spacing: -0.01em;
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    word-break: keep-all;
+    word-wrap: break-word;
 }
 
 
@@ -140,14 +158,14 @@ h3 {
 }
 
 .greeting {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--accent-color);
     display: block;
     margin-bottom: 1rem;
 }
 
 .subtitle {
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem);
     opacity: 0.8;
     max-width: 700px;
     margin-top: 1.5rem;
@@ -172,16 +190,26 @@ h3 {
     margin-top: 3rem;
 }
 
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .project-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 16px;
     overflow: hidden;
+    border: 1px solid var(--border-color);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-color);
 }
 
 .project-image img {
@@ -192,6 +220,7 @@ h3 {
 
 .project-info {
     padding: 2rem;
+    flex-grow: 1;
 }
 
 .project-category {
@@ -214,6 +243,11 @@ h3 {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
+    transition: var(--transition);
+}
+
+.view-project:hover {
+    color: var(--accent-color);
 }
 
 .arrow {
@@ -234,7 +268,7 @@ h3 {
 
 .bio {
     font-size: 1.2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .background {
@@ -326,11 +360,28 @@ h3 {
     border-radius: 100px;
     font-weight: 500;
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
 }
 
 .primary-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.primary-button:hover::before {
+    left: 100%;
 }
 
 .social-links {
@@ -343,6 +394,26 @@ h3 {
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
+    position: relative;
+}
+
+.social-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.social-link:hover::after {
+    width: 100%;
+}
+
+.social-link:hover {
+    color: var(--accent-color);
 }
 
 .social-link:hover {
@@ -358,7 +429,7 @@ footer {
 
 /* Project Detail Pages */
 .project-hero {
-    padding: 8rem 5% 4rem;
+    padding: 8rem 5% 0.1rem;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -367,7 +438,33 @@ footer {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-role, .project-duration {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    background: rgba(255, 107, 107, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.project-impact {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.impact-metric {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
 }
 
 .back-link {
@@ -385,7 +482,7 @@ footer {
     font-size: 1.2rem;
     opacity: 0.8;
     max-width: 800px;
-    margin: 1.5rem 0 3rem;
+    margin: 1.5rem 0 2rem;
 }
 
 .project-image-hero {
@@ -402,12 +499,13 @@ footer {
 }
 
 .project-details {
-    padding: 4rem 5%;
+    padding: 0.1rem 5%;
     max-width: 1000px;
     margin: 0 auto;
 }
 
 .project-overview {
+    margin-top: 8rem;
     margin-bottom: 4rem;
 }
 
@@ -418,7 +516,6 @@ footer {
     margin-top: 3rem;
     padding: 2rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .spec-item h3 {
@@ -432,6 +529,11 @@ footer {
 .spec-item p {
     font-size: 1.1rem;
     font-weight: 500;
+    margin-bottom: 0.1rem;
+}
+
+.spec-item p:last-child {
+    margin-bottom: 0;
 }
 
 .project-section {
@@ -455,6 +557,66 @@ footer {
     position: absolute;
     left: 0;
     font-size: 1.2rem;
+}
+
+/* Sub Projects Grid */
+.sub-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.sub-project-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.sub-project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+}
+
+.sub-project-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.sub-project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sub-project-info {
+    padding: 1.5rem;
+}
+
+.sub-project-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.sub-project-info p {
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.project-status {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(255, 107, 107, 0.1);
+    color: var(--accent-color);
 }
 
 .project-navigation {
@@ -530,7 +692,10 @@ body {
 
 .project-subtitle {
     transition: color 0.6s ease;
+    margin-bottom: 15px;
 }
+
+
 
 /* Dark Mode for Project Detail Pages */
 .dark-mode {
@@ -620,6 +785,53 @@ body {
 .dark-mode .project-image-hero img {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--dark-border-color);
+}
+
+/* === Project Image Styles === */
+/* Main presentation images ('장표') */
+.img-main {
+    display: block;
+    width: 100%;
+    max-width: 864px; /* A generous width for key visuals */
+    height: auto;
+    margin: 3rem auto; /* Ample spacing */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.img-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Process artifacts ('진행과정') */
+.img-process {
+    display: block;
+    width: 100%;
+    max-width: 640px; /* Slightly smaller to create visual hierarchy */
+    height: auto;
+    margin: 2rem auto; /* Less vertical space to group them */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0; /* A simple border instead of a shadow */
+    opacity: 0.9;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+.img-process:hover {
+    opacity: 1;
+    border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .img-main {
+        max-width: 90vw;
+        margin: 2rem auto;
+    }
+    
+    .img-process {
+        max-width: 85vw;
+        margin: 1.5rem auto;
+    }
 }
 
 
@@ -721,3 +933,191 @@ Layer Animation
 
 
 
+
+
+/* === In-Page Navigation === */
+.project-container {
+    display: grid;
+    grid-template-columns: 220px 1fr; /* Navigation and main content */
+    align-items: start;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.in-page-nav {
+    position: sticky;
+    top: 10rem; /* Stick below the main nav */
+    align-self: start;
+}
+
+.in-page-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--border-color);
+}
+
+.in-page-nav li {
+    margin: 0;
+}
+
+.in-page-nav a {
+    display: block;
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+    margin-left: -2px; /* Align with border */
+    transition: all 0.2s ease;
+}
+
+.in-page-nav a:hover {
+    color: var(--text-color);
+    background-color: rgba(0,0,0,0.03);
+}
+
+.in-page-nav a.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    border-left-color: var(--accent-color);
+}
+
+/* Nested list for h3 */
+.in-page-nav ul ul {
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+    border-left: none;
+}
+
+.in-page-nav ul ul a {
+    font-size: 0.85em;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    color: #6c757d; /* Muted color for sub-items */
+}
+
+.in-page-nav ul ul a.active {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .project-container {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+    .in-page-nav {
+        display: none; /* Hide nav on smaller screens */
+    }
+}
+
+/* Adjustments for the main content area */
+.project-main-content .project-hero {
+    max-width: none; /* Override max-width for hero */
+}
+
+.project-main-content .project-details {
+    padding: 0.1rem 0; /* Remove horizontal padding */
+    max-width: none;
+}
+
+/* === Figure and Figcaption Styles === */
+figure {
+    margin: 0; /* Reset browser default margin */
+}
+
+/* Adjust margin for images inside a figure to make room for the caption */
+figure .img-main,
+figure .img-process {
+    margin-bottom: 1rem;
+}
+
+figcaption {
+    max-width: 640px; /* Align with the general content width */
+    margin: 0 auto 3rem; /* Center the caption and add space below */
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* === Image Grid Layout === */
+.image-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem; /* Space between the images */
+    align-items: start; /* Align items to the top */
+    margin: 3rem 0;
+}
+
+/* The images/figures inside the grid should not have their own auto margins */
+.image-grid-2col > figure,
+.image-grid-2col > img {
+    margin: 0;
+}
+
+.image-grid-2col .img-process {
+    margin: 0 auto 1rem; /* Center image within its column, add margin for caption */
+}
+
+.image-grid-2col figcaption {
+    margin-bottom: 0; /* Remove the large bottom margin for gridded items */
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .image-grid-2col {
+        grid-template-columns: 1fr; /* Stack them on smaller screens */
+    }
+}
+
+/* === Polished Typography & Spacing (Expert Review) === */
+
+/* Add character-based max-width for better readability */
+.project-section p {
+    max-width: 75ch;
+}
+
+/* Adjust heading margins for better rhythm */
+.project-section h2 {
+    margin-bottom: 1.5rem;
+}
+
+.project-section h3 {
+    margin-top: 3rem;
+}
+
+/* Increase spacing and add a separator for major sections */
+.project-section {
+    padding-top: 4rem;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Remove top separator for the very first section */
+.project-content > .project-section:first-of-type {
+    padding-top: 0;
+    margin-top: 3rem;
+    border-top: none;
+}
+
+/* Decorative separator for h3 sections */
+.h3-separator {
+    text-align: center;
+    margin: 4rem auto;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+    opacity: 0.3;
+}
+
+/* Tweak for spec items */
+.spec-item-multi-line p {
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+}

@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arden Kim • UX Designer</title>
+    <title>Sunmin Kim • Product Designer</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/dark-mode.css">
     <link rel="stylesheet" href="./style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 
@@ -15,12 +23,16 @@
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="#" class="logo">Arden Kim.</a>
+            <a href="#" class="logo">Sunmin Kim.</a>
             <ul class="nav-links">
-                <li><a href="#work">Work</a></li>
-                <li><a href="#about">About Me</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#work">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
@@ -35,16 +47,17 @@
 
 
 
+
+
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="hero-content">
             <div class="intro-text">
-                <span href="#" class="greeting">Hello, I'm Arden Kim</span>
-                <h1 class="reveal-text">Crafting Digital Experiences Through<br>Human-Centered Design</h1>
-                <p class="subtitle reveal-text-delay">Junior UX Designer with a background in Nanomaterial Chemistry,
-                    bringing analytical precision to user-centered design solutions.</p>
+                <span href="#" class="greeting">안녕하세요,</span>
+                <h1 class="reveal-text">문제 해결 중심의<br>프로덕트 디자이너 김선민입니다</h1>
+                <p class="subtitle reveal-text-delay">데이터 기반 인사이트로 사용자 문제를 해결합니다.</p>
                 <div class="hero-cta">
-                    <a href="#work" class="primary-button">View My Work</a>
+                    <a href="#work" class="primary-button">프로젝트 보기</a>
                 </div>
             </div>
         </div>
@@ -54,76 +67,69 @@
 
 
 
+
+
     <!-- Work Section -->
     <section id="work" class="work-section">
-        <h2>Selected Projects</h2>
+        <h2>Project</h2>
         <div class="project-grid">
             <!-- Project 1 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="./브메.png" alt="BrainMate: Ai based archiving service">
-                </div>
-                <div class="project-info">
-                    <span class="project-category">#UX method focused</span>
-                    <h3>AI based BrainMate</h3>
-                    <p>A brief description of the project and its key outcomes. What problems did it solve?</p>
-                    <a href="brainmate.html" class="view-project">View Project <span class="arrow">→</span></a>
-                </div>
-            </article>
+            <a href="brainmate.html" class="project-card-link">
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="images/project-tile/brainmate_tile.png" alt="BrainMate: Ai based archiving service">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">#UX Modeling</span>
+                        <h3>BrainMate</h3>
+                        <p>자료 검색과 저장을 한 곳에서! 맞춤형 추천으로 자료 탐색 시간을 단축시킵니다.</p>
+                        <span class="view-project">프로젝트 보기 <span class="arrow">→</span></span>
+                    </div>
+                </article>
+            </a>
 
             <!-- Project 2 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="./스타벅스.jpg" alt="Starbucks App Redesign">
-                </div>
-                <div class="project-info">
-                    <span class="project-category">#App Redesign</span>
-                    <h3>Starbucks App Redesign</h3>
-                    <p>A brief description of the project and its key outcomes. What problems did it solve?</p>
-                    <a href="starbucks.html" class="view-project">View Project <span class="arrow">→</span></a>
-                </div>
-            </article>
+            <a href="starbucks.html" class="project-card-link">
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="images/project-tile/starbucks_tile.png" alt="Starbucks App Redesign">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">#App Redesign</span>
+                        <h3>스타벅스 App Redesign</h3>
+                        <p>디자인 시스템 제작<br>모든 플로우 프로토타입 제작<br>UT를 통한 가설 검증</p>
+                        <span class="view-project">프로젝트 보기 <span class="arrow">→</span></span>
+                    </div>
+                </article>
+            </a>
 
             <!-- Project 3 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="./하나카드.png" alt="Hana Card App Redesign">
-                </div>
-                <div class="project-info">
-                    <span class="project-category">#App Redesign</span>
-                    <h3>Hanacard main feature</h3>
-                    <p>A brief description of the project and its key outcomes. What problems did it solve?</p>
-                    <a href="hanacard.html" class="view-project">View Project <span class="arrow">→</span></a>
-                </div>
-            </article>
-
-            <!-- Project 4 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="./insight-dots.png" alt="Insight Dots: Data Visualization Platform">
-                </div>
-                <div class="project-info">
-                    <span class="project-category">#Data Visualization</span>
-                    <h3>Insight Dots</h3>
-                    <p>A data visualization platform that transforms complex datasets into interactive, accessible insights for decision makers.</p>
-                    <a href="insight-dots.html" class="view-project">View Project <span class="arrow">→</span></a>
-                </div>
-            </article>
-
-            <!-- Project 5 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="./job-hunter.png" alt="Job Hunter: Career Management Platform">
-                </div>
-                <div class="project-info">
-                    <span class="project-category">#Career Platform</span>
-                    <h3>Job Hunter</h3>
-                    <p>A comprehensive career management platform that streamlines job searching and application tracking for professionals.</p>
-                    <a href="job-hunter.html" class="view-project">View Project <span class="arrow">→</span></a>
-                </div>
+            <a href="insight-dots.html" class="project-card-link">
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="images/project-tile/AIprojects_tile.png" alt="Insight Dots: Data Visualization Platform">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">#프롬프트</span>
+                        <span class="project-category">#구현</span>
+                        <span class="project-category">#MVP</span>
+                        <h3>AI-Projects</h3>
+                        <p>AI를 활용한 프로젝트<br>빠르게 MVP를 만들고 출시<br>AI로 유저 퍼소나 만들고 스크린 리뷰 진행</p>
+                        <span class="view-project">프로젝트 보기 <span class="arrow">→</span></span>
+                    </div>
+                </article>
+            </a>
+                <style>
+                    .project-category {
+                        margin-right: 5px;
+                    }
+                </style>
             </article>
         </div>
     </section>
+
+
+
 
 
 
@@ -132,77 +138,97 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="about-content">
-            <div class="about-text">
-                <h2>About Me</h2>
-                <p class="bio">As a recent graduate from Kookmin University's Department of Nanomaterial Chemistry,
-                    I bring a unique analytical perspective to UX design. <br>My scientific background has equipped me
-                    with
-                    strong problem-solving skills and attention to detail, which I now apply to creating user-centered
-                    digital experiences.</p>
+            <br class="about-text">
+            <h2>About Me</h2>
+            <p class="bio">AI 시대, 휴먼터치의 중요성</p>
+            과학적 사고와 디자인적 감각을 결합하여,
+            데이터 기반의 의사결정으로 사용자 중심의 솔루션을 만들어갑니다.
+            지속적인 학습을 통해 기존 방식에 안주하지 않고,
+            미래지향적 관점에서 효율적인 접근법을 모색합니다.
+            리소스가 제한된 환경에서도 가장 효율적인 방법을 찾아내
+            비즈니스 관점에서 최적의 결과를 도출합니다.
+            목표 달성을 위한 단계적 실행과 끊임없는 성장을 추구하며,
+            의미 있는 변화를 만들어가는 프로덕트를 디자인하고자 합니다.
+            </p>
 
-                <!-- <div class="background">
-                    <h3>Background</h3>
-                    <p>During my university years, I contributed to a startup project where I helped design an offline dating service. This experience sparked my interest in user experience design and showed me how thoughtful design can positively impact people's lives.</p>
-                </div> -->
-
-                <div class="background">
-                    <h3>Background</h3>
-                    <ul class="timeline">
-                        <li>
-                            <span class="date">2024.02</span>
-                            <div class="timeline-content">
-                                <h4>B.S. in Nanomaterial Chemistry</h4>
-                                <p>Kookmin University</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="date">2022.04-2024.08</span>
-                            <div class="timeline-content">
-                                <h4>Startup project</h4>
-                                <p>UX Designer - Dating Service</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="date">2022.04-2024.08</span>
-                            <div class="timeline-content">
-                                <h4>Startup project</h4>
-                                <p>UX Designer - Dating Service</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="tools-section">
-                    <h3>Tools & Skills</h3>
-                    <div class="tools-grid">
-                        <div class="tool-item">
-                            <span class="tool-name-1">Figma</span>
-                            <div class="tool-bar" data-level="95"></div>
+            <div class="background">
+                <h3>학력</h3>
+                <ul class="timeline">
+                    <li>
+                        <span class="date">2021.03-2024.02</span>
+                        <div class="timeline-content">
+                            <h4>국민대학교 나노소재화학과 학사</h4>
                         </div>
-                        <div class="tool-item">
-                            <span class="tool-name-2">Photoshop</span>
-                            <div class="tool-bar" data-level="80"></div>
+                    </li>
+                    <li>
+                        <span class="date">2019.03-2021.02</span>
+                        <div class="timeline-content">
+                            <h4>강원대학교 환경과학과</h4>
                         </div>
-                        <div class="tool-item">
-                            <span class="tool-name-3">Notion</span>
-                            <div class="tool-bar" data-level="95"></div>
-                        </div>
-                        <div class="tool-item">
-                            <span class="tool-name-4">Git/GitHub</span>
-                            <div class="tool-bar" data-level="75"></div>
-                        </div>
-                        <div class="tool-item">
-                            <span class="tool-name-5">HTML/CSS</span>
-                            <div class="tool-bar" data-level="75"></div>
-                        </div>
-                        <div class="tool-item">
-                            <span class="tool-name-6">JavaScript</span>
-                            <div class="tool-bar" data-level="70"></div>
-                        </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
-        </div>
+
+
+            <div class="background">
+                <h3>경력 및 활동</h3>
+                <ul class="timeline">
+                    <li>
+                        <span class="date">2025.02-</span>
+                        <div class="timeline-content">
+                            <h4>AI powered Projects</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2025.05-2025.09</span>
+                        <div class="timeline-content">
+                            <h4>Starbucks 앱 리디자인</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2025.01-2025.05</span>
+                        <div class="timeline-content">
+                            <h4>직관적인 자료탐색 서비스 BrainMate</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2024.08-2024.12</span>
+                        <div class="timeline-content">
+                            <h4>멋쟁이사자처럼 UXUI 디자인스쿨 3기 수료</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2024.01-2024.06</span>
+                        <div class="timeline-content">
+                            <h4>미드저니 이미지 생성 프롬프팅 스터디</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2023.08</span>
+                        <div class="timeline-content">
+                            <h4>한국장학재단 과학교육봉사</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2022.07-2022.08</span>
+                        <div class="timeline-content">
+                            <h4>아산재단 AER 기업가정신리뷰 참가</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2022.03-2022.10</span>
+                        <div class="timeline-content">
+                            <h4>창업 팀 프로젝트 '첫 눈'</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="date">2021.07-2022.07</span>
+                        <div class="timeline-content">
+                            <h4>국민대학교 홍보팀 사진실 근무</h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
     </section>
 
 
@@ -212,16 +238,16 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="contact-content">
-            <h2>Let's Create Something Together</h2>
-            <p>Currently open to UX designer positions and freelance opportunities.
-                <br>I would love to discuss how I can contribute to your team.
-            </p>
+            <h2>함께 만들어가요</h2>
+            <p>현재 프로덕트 디자이너 포지션을 찾고 있습니다.
+             <br> 연락 주시면 24시간 이내에 답변 드리겠습니다.</p>
             <div class="contact-buttons">
                 <a href="mailto:lovetung18@gmail.com" class="primary-button">
-                    Get in Touch
+                    연락하기
                 </a>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/arden-kim-12196628b/" class="social-link" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/arden-kim-12196628b/" class="social-link"
+                        target="_blank">LinkedIn</a>
                     <a href="https://github.com/atreides9" class="social-link" target="_blank">GitHub</a>
                     <a href="https://www.notion.so/arden-kim" class="social-link" target="_blank">Notion</a>
                 </div>
@@ -230,7 +256,7 @@
     </section>
 
     <footer>
-        <p>© 2025 Arden Kim • Built with care</p>
+        <p>© 2025 Sunmin Kim • Built with care</p>
     </footer>
 
     <script src="./script.js"></script>

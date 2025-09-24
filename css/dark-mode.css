@@ -1,0 +1,278 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+/* Navigation in Dark Mode */
+.dark-mode .nav-container {
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+/* Hero Section */
+.dark-mode .hero-section {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .hero-content h1 {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .subtitle {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .greeting {
+    color: var(--dark-text-secondary);
+}
+
+/* Work Section */
+.dark-mode .work-section {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .project-card {
+    background: var(--dark-bg-secondary);
+    border: 1px solid var(--dark-border);
+}
+
+.dark-mode .project-card:hover {
+    background: var(--dark-bg-elevated);
+}
+
+/* About Section */
+.dark-mode .about-section {
+    background-color: var(--dark-bg-primary);
+}
+
+.dark-mode .bio {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .tools-grid {
+    background: var(--dark-bg-secondary);
+}
+
+/* Contact Section */
+.dark-mode .contact-section {
+    background-color: var(--dark-bg-primary);
+}
+
+.dark-mode .contact-content h2 {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .contact-content p {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .logo {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .nav-links a {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .nav-links a:hover {
+    color: var(--primary-500);
+}
+
+.dark-mode .nav-links a::after {
+    background-color: var(--primary-500);
+}
+
+/* Project Page Elements */
+.dark-mode .back-link {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .back-link:hover {
+    color: var(--primary-500);
+}
+
+.dark-mode .project-category {
+    color: var(--primary-500);
+}
+
+.dark-mode .project-subtitle {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .project-overview p {
+    color: var(--dark-text-secondary);
+}
+
+/* Project Specifications */
+.dark-mode .project-specs {
+    background: var(--dark-bg-primary);
+    border: 1px solid var(--dark-border);
+}
+
+.dark-mode .spec-item h3 {
+    color: var(--primary-500);
+}
+
+.dark-mode .spec-item p {
+    color: var(--dark-text-secondary);
+}
+
+/* Lists and Content */
+.dark-mode .feature-list li::before {
+    color: var(--primary-500);
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4 {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode p {
+    color: var(--dark-text-secondary);
+}
+
+/* Project Navigation */
+.dark-mode .project-navigation {
+    border-top: 1px solid var(--dark-border);
+    background: var(--dark-bg-secondary);
+}
+
+.dark-mode .nav-project {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border: 1px solid var(--dark-border);
+    transition: background-color var(--transition-base), 
+                box-shadow var(--transition-base);
+}
+
+.dark-mode .nav-project:hover {
+    background: #3a3a3a;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .nav-project span {
+    color: var(--primary-500);
+}
+
+.dark-mode .nav-project h3 {
+    color: var(--dark-text-primary);
+}
+
+/* Images and Media */
+.dark-mode .project-image-hero img {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--dark-border);
+}
+
+.dark-mode .project-image img {
+    border: 1px solid var(--dark-border);
+}
+
+/* Footer */
+.dark-mode footer {
+    background: var(--dark-bg-primary);
+    color: var(--dark-text-secondary);
+    border-top: 1px solid var(--dark-border);
+}
+
+/* Buttons in Dark Mode */
+.dark-mode .primary-button {
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+}
+
+.dark-mode .primary-button:hover {
+    box-shadow: 0 12px 30px rgba(255, 107, 107, 0.4);
+}
+
+.dark-mode .btn--secondary {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border: 1px solid var(--dark-border);
+}
+
+.dark-mode .btn--secondary:hover {
+    background: #3a3a3a;
+    color: var(--dark-text-primary);
+}
+
+/* Social Links */
+.dark-mode .social-link {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .social-link:hover {
+    background: var(--dark-bg-secondary);
+    color: var(--primary-500);
+}
+
+/* Form Elements (if any) */
+.dark-mode input,
+.dark-mode textarea {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border: 1px solid var(--dark-border);
+}
+
+.dark-mode input:focus,
+.dark-mode textarea:focus {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+/* Cards and Components */
+.dark-mode .tool-item {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border: 1px solid var(--dark-border);
+}
+
+.dark-mode .tool-item:hover {
+    background: #3a3a3a;
+}
+
+/* Timeline in Dark Mode */
+.dark-mode .timeline::before {
+    background: var(--dark-border);
+}
+
+.dark-mode .timeline li::before {
+    background: var(--primary-500);
+    box-shadow: 0 0 0 3px var(--dark-bg-primary);
+}
+
+.dark-mode .date {
+    color: var(--primary-500);
+}
+
+/* Focus States */
+.dark-mode :focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+}
+
+/* Scrollbar Styling for Dark Mode */
+.dark-mode::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dark-mode::-webkit-scrollbar-track {
+    background: var(--dark-bg-primary);
+}
+
+.dark-mode::-webkit-scrollbar-thumb {
+    background: var(--dark-border);
+    border-radius: 4px;
+}
+
+.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

@@ -1368,3 +1368,29 @@ body.dark-mode .sun-icon {
 body.dark-mode .moon-icon {
     opacity: 1;
 }
+
+/* Override for project pages to maintain original content colors */
+.project-container,
+.project-main-content,
+.project-hero,
+.project-details,
+.project-content,
+.project-section,
+.in-page-nav {
+    /* Ensure project content maintains original styling */
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Project specific overrides to prevent layout CSS interference */
+.project-container {
+    background: inherit !important;
+}
+
+.project-hero {
+    background: var(--project-hero-bg, inherit) !important;
+}
+
+.project-details {
+    background: var(--project-details-bg, inherit) !important;
+}

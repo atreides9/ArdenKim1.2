@@ -60,8 +60,19 @@
 
 /* About Section Layout */
 .about-section {
-    padding: var(--space-20) var(--space-20);
+    padding: var(--space-20) var(--space-20) var(--space-24);
     background: var(--neutral-100);
+    position: relative;
+}
+
+.about-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, var(--neutral-100), transparent);
 }
 
 .about-content {
@@ -71,6 +82,7 @@
 
 .about-text {
     max-width: 800px;
+    margin-bottom: var(--space-16); /* Add more spacing before background sections */
 }
 
 .bio {
@@ -125,16 +137,26 @@
 
 /* Footer Layout */
 footer {
-    padding: var(--space-8) var(--space-20);
+    padding: var(--space-12) var(--space-20);
     text-align: center;
-    background: var(--neutral-800);
-    color: var(--neutral-100);
+    background: var(--neutral-800) !important;
+    color: var(--neutral-100) !important;
+    border-top: 2px solid var(--neutral-200);
+    margin-top: 0;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
 }
 
 footer p {
     margin: 0;
     font-size: var(--text-sm);
-    opacity: 0.8;
+    opacity: 0.9 !important;
+    line-height: 1.6;
+    color: var(--neutral-100) !important;
 }
 
 /* Project Detail Page Layout */

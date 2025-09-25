@@ -228,6 +228,85 @@
 .tool-bar[data-level="75"]::after { width: 75%; }
 .tool-bar[data-level="70"]::after { width: 70%; }
 
+/* Email Copy Button */
+.email-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    margin: var(--space-4) 0;
+    background: var(--neutral-100);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+    color: var(--neutral-800);
+    font-family: inherit;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.email-copy-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.email-copy-btn:hover::before {
+    left: 100%;
+}
+
+.email-copy-btn:hover {
+    background: var(--neutral-50);
+    border-color: var(--primary-500);
+    transform: translateY(-1px);
+}
+
+.email-copy-btn:active {
+    transform: translateY(0);
+}
+
+.email-copy-btn.copied {
+    background: var(--primary-100);
+    color: var(--primary-700);
+    border-color: var(--primary-300);
+    animation: shimmerSuccess 0.8s ease;
+}
+
+@keyframes shimmerSuccess {
+    0% {
+        background: var(--primary-100);
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+    }
+    50% {
+        background: var(--primary-200);
+        box-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+    }
+    100% {
+        background: var(--primary-100);
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+    }
+}
+
+.email-copy-btn.copied::before {
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.8), 
+        transparent
+    );
+    left: 100%;
+}
+
 /* Social Links Component */
 .social-links {
     display: flex;
@@ -236,6 +315,9 @@
 }
 
 .social-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     color: var(--neutral-800);
     font-weight: 500;
     text-decoration: none;
@@ -244,9 +326,28 @@
     transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
+.social-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
 .social-link:hover {
     background: var(--neutral-100);
     color: var(--primary-500);
+}
+
+/* Brand-specific hover colors */
+.social-link[href*="linkedin"]:hover {
+    color: #0077b5;
+}
+
+.social-link[href*="github"]:hover {
+    color: #333;
+}
+
+.social-link[href*="notion"]:hover {
+    color: #000;
 }
 
 /* Contact Buttons */

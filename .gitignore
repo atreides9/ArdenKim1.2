@@ -6,3 +6,8 @@
 
 # Backup files
 *.bak
+
+# Image files (but keep essential project images)
+*.png
+*.gif
+!project-tile/*.png

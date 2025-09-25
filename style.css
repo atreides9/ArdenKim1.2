@@ -39,7 +39,7 @@ h1 {
     font-size: clamp(3rem, 5vw, 4rem);
     font-weight: 700;
     line-height: 1.2;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     letter-spacing: -0.02em;
 }
 
@@ -168,7 +168,7 @@ p {
     font-size: clamp(1.25rem, 1.5vw, 1.5rem);
     opacity: 0.8;
     max-width: 700px;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .hero-cta {
@@ -204,6 +204,8 @@ p {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    height: 100%;
+    min-height: 480px;
 }
 
 .project-card:hover {
@@ -221,6 +223,9 @@ p {
 .project-info {
     padding: 2rem;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-category {
@@ -229,6 +234,8 @@ p {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
+    margin-right: 10px;
+    display: inline-block;
 }
 
 .project-info h3 {
@@ -239,7 +246,8 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1.5rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
@@ -261,7 +269,7 @@ p {
 
 /* About Section */
 .about-section {
-    padding: 8rem 5%;
+    padding: 12rem 5% 8rem;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -420,12 +428,7 @@ p {
     color: var(--accent-color);
 }
 
-/* Footer */
-footer {
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.9rem;
-}
+/* Footer styles moved to layout.css for better organization */
 
 /* Project Detail Pages */
 .project-hero {
@@ -778,9 +781,7 @@ body {
     color: var(--dark-text-color);
 }
 
-.dark-mode footer {
-    color: var(--dark-text-secondary);
-}
+/* Dark mode footer styles moved to dark-mode.css */
 
 .dark-mode .project-image-hero img {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -956,7 +957,6 @@ Layer Animation
     list-style: none;
     padding: 0;
     margin: 0;
-    border-left: 1px solid var(--border-color);
 }
 
 .in-page-nav li {
@@ -989,8 +989,17 @@ Layer Animation
 /* Nested list for h3 */
 .in-page-nav ul ul {
     padding-left: 1rem;
-    margin: 0.5rem 0;
+    margin: 0;
     border-left: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, margin 0.4s ease-in-out;
+}
+
+/* When parent link is active, expand the sub-menu */
+.in-page-nav > ul > li:has(> a.active) ul {
+    margin: 0.5rem 0;
+    max-height: 500px; /* Large enough to fit all items */
 }
 
 .in-page-nav ul ul a {
@@ -998,11 +1007,13 @@ Layer Animation
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
     color: #6c757d; /* Muted color for sub-items */
+    opacity: 0.7;
 }
 
 .in-page-nav ul ul a.active {
     color: var(--accent-color);
     font-weight: 500;
+    opacity: 1;
 }
 
 /* Responsive adjustments */
@@ -1085,7 +1096,7 @@ figcaption {
 
 /* Adjust heading margins for better rhythm */
 .project-section h2 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .project-section h3 {
@@ -1120,4 +1131,240 @@ figcaption {
 .spec-item-multi-line p {
     margin-bottom: 0.25rem;
     line-height: 1.5;
+}
+
+/* === Prototype List Styles === */
+.prototype-list {
+    margin: 4rem 0;
+}
+
+.prototype-row {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    max-width: 1200px;
+}
+
+.prototype-row:last-child {
+    margin-bottom: 0;
+}
+
+.prototype-gif {
+    flex: 0 0 auto;
+}
+
+.prototype-gif img {
+    width: auto;
+    height: auto;
+    max-width: 320px;
+    max-height: 600px;
+    border-radius: 45px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prototype-gif img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+}
+
+.prototype-description {
+    flex: 1;
+    padding-left: 1rem;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: fadeInSlide 0.8s ease forwards;
+}
+
+.prototype-row:nth-child(1) .prototype-description {
+    animation-delay: 0.2s;
+}
+
+.prototype-row:nth-child(2) .prototype-description {
+    animation-delay: 0.4s;
+}
+
+.prototype-row:nth-child(3) .prototype-description {
+    animation-delay: 0.6s;
+}
+
+.prototype-row:nth-child(4) .prototype-description {
+    animation-delay: 0.8s;
+}
+
+.prototype-row:nth-child(5) .prototype-description {
+    animation-delay: 1.0s;
+}
+
+.prototype-row:nth-child(6) .prototype-description {
+    animation-delay: 1.2s;
+}
+
+.prototype-description h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.prototype-description:hover h4 {
+    color: var(--accent-color);
+}
+
+.prototype-description p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.prototype-description:hover p {
+    color: var(--text-color);
+    transform: translateX(5px);
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Dark mode support */
+.dark-mode .prototype-gif img {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .prototype-gif img:hover {
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .prototype-description h4 {
+    color: var(--dark-text-color);
+}
+
+.dark-mode .prototype-description p {
+    color: var(--dark-text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .prototype-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    
+    .prototype-gif img {
+        max-width: 280px;
+        max-height: 520px;
+    }
+    
+    .prototype-description {
+        padding-left: 0;
+    }
+    
+    .prototype-description h4 {
+        font-size: 1.3rem;
+    }
+    
+    .prototype-description p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .prototype-row {
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    .prototype-gif img {
+        max-width: 240px;
+        max-height: 450px;
+    }
+    
+    .prototype-description h4 {
+        font-size: 1.2rem;
+    }
+    
+    .prototype-description p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Theme Toggle Button - Essential styles only */
+.theme-toggle {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background: #f5f5f5;
+    border: 2px solid #efefef;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    border-color: #FF6B6B;
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.1);
+}
+
+.sun-icon, .moon-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.sun-icon {
+    left: 4px;
+    opacity: 1;
+}
+
+.moon-icon {
+    right: 4px;
+    opacity: 0;
+}
+
+/* Dark mode toggle states */
+body.dark-mode .theme-toggle {
+    background: #2a2a2a;
+    border: 2px solid #555;
+}
+
+body.dark-mode .theme-toggle::before {
+    transform: translateX(24px);
+    background: #f0f0f0;
+}
+
+body.dark-mode .sun-icon {
+    opacity: 0;
+}
+
+body.dark-mode .moon-icon {
+    opacity: 1;
 }

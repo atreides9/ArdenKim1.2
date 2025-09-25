@@ -23,14 +23,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
+        
+        // Handle scroll to top
+        if (targetId === '#top') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+        
         const targetElement = document.querySelector(targetId);
-        const navHeight = document.querySelector('.nav-container').offsetHeight;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        if (targetElement) {
+            const navHeight = document.querySelector('.nav-container').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
 
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -153,6 +165,10 @@ class ThemeManager {
 
 // Initialize theme manager when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove preload class to enable transitions
+    document.body.classList.remove('preload');
+    document.documentElement.classList.remove('dark-mode-loading');
+    
     const themeManager = new ThemeManager();
     
     // Update navigation background on scroll (only for light mode)
@@ -161,15 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
             themeManager.updateNavigationBackground();
         }
     });
-    
-    // Smooth dark mode transition for project pages (legacy support)
-    if (document.body.classList.contains('dark-mode') && !localStorage.getItem('theme')) {
-        // This is for backward compatibility with existing project pages
-        document.body.classList.remove('dark-mode');
-        setTimeout(() => {
-            document.body.classList.add('dark-mode');
-        }, 50);
-    }
 
     // In-page navigation scroll spy
     const sections = document.querySelectorAll('.project-section[id]');
@@ -234,3 +241,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Email copy functionality
+function copyEmail() {
+    const email = 'lovetung18@gmail.com';
+    const button = document.querySelector('.email-copy-btn');
+    
+    // Use modern clipboard API if available
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => {
+            showCopySuccess(button);
+        }).catch(() => {
+            // Fallback to older method
+            fallbackCopyText(email, button);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopyText(email, button);
+    }
+}
+
+function fallbackCopyText(text, button) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopySuccess(button);
+    } catch (err) {
+        console.error('Failed to copy email: ', err);
+        button.textContent = '복사 실패 ❌';
+        setTimeout(() => {
+            button.innerHTML = 'lovetung18@gmail.com 📋';
+        }, 2000);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showCopySuccess(button) {
+    const originalText = button.innerHTML;
+    button.classList.add('copied');
+    button.textContent = '복사됨! ✅';
+    
+    setTimeout(() => {
+        button.classList.remove('copied');
+        button.innerHTML = originalText;
+    }, 2000);
+}

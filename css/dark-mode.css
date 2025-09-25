@@ -50,6 +50,10 @@ body.dark-mode {
     background-color: var(--dark-bg-primary);
 }
 
+.dark-mode .about-section::after {
+    background: linear-gradient(to bottom, var(--dark-bg-primary), transparent);
+}
+
 .dark-mode .bio {
     color: var(--dark-text-secondary);
 }
@@ -204,6 +208,56 @@ body.dark-mode {
     color: var(--dark-text-primary);
 }
 
+/* Email Copy Button */
+.dark-mode .email-copy-btn {
+    background: var(--dark-bg-secondary);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .email-copy-btn:hover {
+    background: var(--dark-bg-elevated);
+    border-color: var(--primary-500);
+}
+
+.dark-mode .email-copy-btn::before {
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent
+    );
+}
+
+.dark-mode .email-copy-btn.copied {
+    background: var(--primary-900);
+    color: var(--primary-300);
+    border-color: var(--primary-500);
+    animation: shimmerSuccessDark 0.8s ease;
+}
+
+.dark-mode .email-copy-btn.copied::before {
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+}
+
+@keyframes shimmerSuccessDark {
+    0% {
+        background: var(--primary-900);
+        box-shadow: 0 0 5px rgba(255, 138, 138, 0.3);
+    }
+    50% {
+        background: var(--primary-800);
+        box-shadow: 0 0 15px rgba(255, 138, 138, 0.6);
+    }
+    100% {
+        background: var(--primary-900);
+        box-shadow: 0 0 5px rgba(255, 138, 138, 0.3);
+    }
+}
+
 /* Social Links */
 .dark-mode .social-link {
     color: var(--dark-text-secondary);
@@ -212,6 +266,48 @@ body.dark-mode {
 .dark-mode .social-link:hover {
     background: var(--dark-bg-secondary);
     color: var(--primary-500);
+}
+
+/* Dark mode brand-specific hover colors */
+.dark-mode .social-link[href*="linkedin"]:hover {
+    color: #4db6e6;
+}
+
+.dark-mode .social-link[href*="github"]:hover {
+    color: #f0f0f0;
+}
+
+.dark-mode .social-link[href*="notion"]:hover {
+    color: #ffffff;
+}
+
+/* View Project Link */
+.dark-mode .view-project {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .view-project:hover {
+    color: var(--primary-500);
+}
+
+/* Theme Toggle Enhancement for Better Visibility in Dark Mode */
+.dark-mode .theme-toggle {
+    background: #2a2a2a;
+    border: 2px solid #555;
+}
+
+.dark-mode .theme-toggle:hover {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+.dark-mode .theme-toggle:focus-visible {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.3);
+}
+
+.dark-mode .theme-toggle::before {
+    background: #f0f0f0;
 }
 
 /* Form Elements (if any) */

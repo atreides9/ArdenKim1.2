@@ -7,27 +7,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrainMate - AI 기반 아카이빙 서비스 | Sunmin Kim</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/dark-mode.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Prevent dark mode flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode-loading');
+                document.body.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    
+    <style>
+        /* Prevent flash during page load */
+        .dark-mode-loading {
+            background-color: #121212 !important;
+            color: #e0e0e0 !important;
+        }
+        
+        /* Smooth transitions for theme changes */
+        * {
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        
+        /* Disable transitions during page load to prevent flash */
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
 
-<body>
+<body class="preload">
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
             <a href="index.html" class="logo">Sunmin Kim.</a>
             <ul class="nav-links">
-                <li><a href="index.html#work">Projects</a></li>
+                <li><a href="index.html#work">Project</a></li>
                 <li><a href="index.html#about">About me</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
     <div class="project-container">
         <aside class="in-page-nav">
             <ul>
+                <li><a href="#overview">Overview</a></li>
                 <li><a href="#problem">Problem</a></li>
-                <li><a href="#research">Research & Modeling</a>
+                <li><a href="#research">Research</a>
                     <ul>
                         <li><a href="#research-competitors">Competitive Analysis</a></li>
                         <li><a href="#research-hypothesis">Hypothesis</a></li>
@@ -36,9 +72,16 @@
                         <li><a href="#research-idi">In-Depth Interview</a></li>
                     </ul>
                 </li>
+                <li><a href="#modeling">UX Modeling</a>
+                    <ul>
+                        <li><a href="#modeling-data">Data Modeling</a></li>
+                        <li><a href="#modeling-affinity">Affinity Diagram</a></li>
+                        <li><a href="#modeling-persona">Persona</a></li>
+                        <li><a href="#modeling-journeymap">User Journey Map</a></li>
+                    </ul>
+                </li>
                 <li><a href="#strategy">Strategy</a></li>
                 <li><a href="#solution">Solution</a></li>
-                <li><a href="#learning">Learning</a></li>
             </ul>
         </aside>
 
@@ -50,23 +93,29 @@
                         <a href="index.html#work" class="back-link">← 홈으로</a>
                     </div>
                     <h1>Brainmate</h1>
-                    <p class="project-subtitle">브레인메이트는 AI 기반 분류 및 추천을 통해 사용자가 효율적으로 자료를 탐색하고 정리할 수 있도록 돕는 지능형 아카이빙 서비스입니다.</p>
+                    <p class="project-subtitle">브레인메이트는 AI 기반 분류 및 추천을 통해 사용자가 효율적으로 자료를 탐색하고 정리할 수 있도록 돕는 지능형 아카이빙
+                        서비스입니다.</p>
                 </div>
             </section>
 
             <!-- Project Details -->
             <section class="project-details">
                 <div class="project-content">
-                    <div class="project-overview">
+                    <div id="overview" class="project-overview">
+                        <h2>개요</h2>
+                        <p>Brainmate는 AI 기반 분류 및 추천을 통해 사용자가 효율적으로 자료를 탐색하고 정리할 수 있도록 돕는 지능형 아카이빙 서비스입니다. 이 프로젝트는 정보 과부하
+                            문제를 해결하고, 사용자에게 개인화된 아카이빙 경험을 제공하는 것을 목표로 합니다.</p>
                         <div class="project-specs">
                             <div class="spec-item">
                                 <h3>역할</h3>
-                                <p>UX 디자이너</p>
+                                <p>UX Modeling 주도</p>
+                                <p>In-Depth Interview 진행</p>
+                                <p>HMW, Crazy8 워크샵 진행</p>
                             </div>
                             <div class="spec-item spec-item-multi-line">
                                 <h3>기간</h3>
                                 <p>개인 작업 : 2024.12 - 2025.02</p>
-                                <p>팀 작업 : 2024.09 - 2024.10</p>
+                                <p>팀 작업: 2024.09 - 2024.10</p>
                             </div>
                             <div class="spec-item">
                                 <h3>Tools</h3>
@@ -76,160 +125,220 @@
                     </div>
 
                     <div id="problem" class="project-section">
-                        <h2>Problem</h2>
-                        <p>사용자들은 디지털 환경에서 정보 과부하에 어려움을 겪고 있습니다. 콘텐츠를 탐색하면서 피로가 쌓이고, 자료를 정리하고 분류하는 데 어려움을 겪고 있습니다.</p>
+                        <h2>문제 정의</h2>
+                        <p>정보 과부하 시대에 사용자들이 디지털 환경에서 콘텐츠 탐색 피로와 
+                        자료 정리 및 분류의 어려움을 겪고 있다는 핵심 문제를 제기했습니다.</p>
                     </div>
-                    <figure>
-                        <img class="img-main" src="images/장표/3.png" alt="배경">
-                        <figcaption>배경</figcaption>
-                    </figure>
+                    <img class="img-main" src="images/장표/3.png" alt="배경">
                     <div id="research" class="project-section">
-                        <h2>Research & UX Modeling</h2>
-                        <p>사용자들은 디지털 환경에서 정보 과부하에 어려움을 겪고 있습니다. 콘텐츠를 탐색하면서 피로가 쌓이고, 자료를 정리하고 분류하는 데 어려움을 겪고 있습니다.</p>
+                        <h2>마켓 및 유저 리서치</h2>
+                        <p>경쟁사 조사를 통한 포지셔닝 맵 작성부터 175명 대상 서베이, 5명과의 심층 인터뷰까지
+                            체계적인 리서치를 통해 사용자의 아카이빙 페인포인트와 니즈를 검증했습니다.</p>
 
-                        <h3 id="research-competitors">Competitive Analysis</h3>
+                        <h3 id="research-competitors">경쟁사 조사</h3>
+                        <p>아카이빙 및 자료 탐색 서비스의 경쟁사를 비교분석하고
+                        다양한 축 특성을 적용하여 포지셔닝맵을 작성했습니다.</p>
                         <img class="img-main" src="images/장표/4.png" alt="경쟁사 조사">
+                        <figure><img class="img-process" src="images/진행과정/경쟁사 비교 표.png" alt=""></figure>
+                            <figcaption>아카이빙 및 자료 탐색 서비스 경쟁사 비교분석 (연주님이 작성)</figcaption>
                         <figure>
                             <img class="img-process" src="images/진행과정/포지셔닝.png" alt="여러가지 축 특성을 적용해보면서 포지셔닝맵 작성">
                             <figcaption>여러가지 축 특성을 적용해보면서 포지셔닝맵 작성</figcaption>
                         </figure>
                         <div class="h3-separator"></div>
-                        <h3 id="research-hypothesis">Hypothesis</h3>
+
+                        <h3 id="research-hypothesis">가설 설계</h3>
+                        <p>데스크 리서치를 바탕으로 아카이빙 서비스에 대한
+                        1차 가설을 설계했습니다.</p>
                         <img class="img-main" src="images/장표/5.png" alt="Hypothesis">
+                        <figcaption>데스크 리서치를 바탕으로 1차 가설을 설계했습니다</figcaption>
                         <div class="h3-separator"></div>
-                        <h3 id="research-methodology">Research Method</h3>
+
+                        <h3 id="research-methodology">리서치 메소드 선정</h3>
+                        <p>설정한 가설을 검증하기 위해 최적의
+                        유저 리서치 방법을 선정했습니다.</p>
                         <figure>
                             <img class="img-main" src="images/장표/6.png" alt="Research Method">
-                            <figcaption>Research Method</figcaption>
+                            <figcaption>유저 리서치 방법 선정</figcaption>
                         </figure>
                         <div class="h3-separator"></div>
-                        <h3 id="research-survey">Survey</h3>
+
+                        <h3 id="research-survey">서베이</h3>
+                        <p>질문지 작성 및 구조화부터 파일럿 테스트를 거쳐 정식 서베이를 진행하여
+                        175명의 응답을 확보했습니다.</p>
                         <figure>
                             <img class="img-main" src="images/장표/7.png" alt="Survey">
-                            <figcaption>Survey</figcaption>
+                            <figcaption>파일럿 테스트를 거쳐 정식 서베이 진행</figcaption>
                         </figure>
                         <div class="image-grid-2col">
                             <figure>
-                                <img class="img-process" src="images/진행과정/서베이 질문지 제작과정 1.png" alt="서베이 질문지 작성 및 구조화">
+                                <img class="img-process" src="images/진행과정/서베이 질문지 제작과정 1.png"
+                                    alt="서베이 질문지 작성 및 구조화">
                                 <figcaption>서베이 질문지 작성 및 구조화</figcaption>
                             </figure>
                             <figure>
                                 <img class="img-process" src="images/진행과정/서베이 결과.png" alt="서베이 진행하여 175명 응답 확보">
-                                <figcaption>서베이 진행하여 175명 응답 확보</figcaption>
+                                <figcaption>서베이를 통해 175명 응답 확보</figcaption>
                             </figure>
                         </div>
                         <div class="h3-separator"></div>
-                        <h3 id="research-idi">In-Depth Interview</h3>
+
+                        <h3 id="research-idi">심층 인터뷰</h3>
+                        <p>인터뷰지 작성부터 파일럿 테스트, 질문지 수정을 거쳐
+                        5명의 참가자와 퍼소나 모델링을 거친 AI로 IDI를 진행했습니다.</p>
                         <figure>
                             <img class="img-main" src="images/장표/8.png" alt="IDI">
-                            <figcaption>In-Depth Interview</figcaption>
+                            <figcaption>5명의 참가자와 퍼소나 모델링을 거친 AI로 IDI 진행</figcaption>
                         </figure>
                         <figure>
                             <img class="img-process" src="images/진행과정/IDI 파일럿테스트.png" alt="질문지 작성 후 파일럿 테스트 진행">
-                            <figcaption>질문지 작성 후 파일럿 테스트 진행</figcaption>
+                            <figcaption>인터뷰지 작성 후 파일럿 테스트 진행</figcaption>
                         </figure>
                         <figure>
-                            <img class="img-process" src="images/진행과정/IDI 질문지 작성.png" alt="파일럿 테스트를 기반으로 IDI 질문지 수정">
-                            <figcaption>파일럿 테스트를 기반으로 IDI 질문지 수정</figcaption>
+                            <img class="img-process" src="images/진행과정/IDI 질문지 작성.png"
+                                alt="파일럿 테스트를 기반으로 IDI 질문지 수정">
+                            <figcaption>파일럿 테스트를 기반으로 IDI 인터뷰지 수정</figcaption>
                         </figure>
                         <figure>
                             <img class="img-process" src="images/진행과정/IDI 첫번쨰 진행.png" alt="첫번째 IDI 진행">
                             <figcaption>첫번째 IDI 진행</figcaption>
                         </figure>
 
-                        <div id="strategy" class="project-section">
-                            <h2>Strategy</h2>
-                            <p>BrainMate는 AI 기반 자동 분류, 지능형 태깅, 맥락적 검색을 도입하여 원활한 아카이빙 경험을 제공합니다. 인터페이스는 사용자 행동에 적응하며, 선호도를 학습하여
-                                시간이
-                                지남에 따라 정리 방식을 개선합니다.</p>
+
+                        <div id="modeling" class="project-section">
+                            <h2 id="modeling">UX 모델링</h2>
+                            <p>IDI 답변을 5개 항목으로 체계적 분류 및 그룹핑하여 Affinity Diagram을 진행하고,
+                                사용자 특성을 반영한 퍼소나와 User Journey Map을 통해 핵심 인사이트를 도출했습니다.</p>
                             <img class="img-main" src="images/장표/9.png" alt="">
+                            <h3 id="modeling-data">Data Modeling</h3>
+                            <p>IDI 답변을 Pain Point, Needs, Behavior, Fact, Feeling 5개 항목으로 분류하고
+                            각 항목별로 체계적인 그룹핑을 진행했습니다.</p>
                             <figure>
                                 <img class="img-process" src="images/진행과정/데이터클렌징.png"
                                     alt="Pain Point, Needs, Behavior, Fact, Feeling 5개 항목으로 IDI 답변을 분류하고 각 항목별로 그룹핑했습니다.">
-                                <figcaption>Pain Point, Needs, Behavior, Fact, Feeling 5개 항목으로 IDI 답변을 분류하고 각 항목별로 그룹핑했습니다.</figcaption>
+                                <figcaption>Pain Point, Needs, Behavior, Fact, Feeling 5개 항목으로 IDI 답변을 분류하고 각 항목별로
+                                    그룹핑했습니다.</figcaption>
                             </figure>
                             <figure>
                                 <img class="img-process" src="images/진행과정/IDI 6명 답변 데이터 클렌징.png"
                                     alt="첫번째 참가자 답변에서 사용한 데이터클렌징과 같이,IDI 참여자 6명의 답변에서 각각 5개 항목을 추출하여 항목별로 그룹핑했습니다.">
-                                <figcaption>첫번째 참가자 답변에서 사용한 데이터클렌징과 같이,IDI 참여자 6명의 답변에서 각각 5개 항목을 추출하여 항목별로 그룹핑했습니다.</figcaption>
-                            </figure>
-                            <figure>
-                                <img class="img-process" src="images/진행과정/Affinity Diagram.png" alt="추출된 모든 항목에서 가장 중요한 Pain Point, Needs를 함께 묶어 Affinity Diagram을 진행했습니다. 먼저 비슷한 내용을 그룹핑하여 큰 그룹을 나누고 그 안에서 다시 그룹핑하여 세부 그룹을 만들었습니다. 최종적으로 형성된 각 그룹에서 가장 대표되는 Header를 선출하여 인사이트를 얻고, 이를 통해 솔루션을 추출했습니다. 이 과정을 통해 어떤 것을 원하고, 어떤 것에 애로사항을 느끼는지 추출할 수 있었습니다.">
-                                <figcaption>추출된 모든 항목에서 가장 중요한 Pain Point, Needs를 함께 묶어 Affinity Diagram을 진행했습니다. 먼저 비슷한 내용을 그룹핑하여 큰 그룹을 나누고 그 안에서 다시 그룹핑하여 세부 그룹을 만들었습니다. 최종적으로 형성된 각 그룹에서 가장 대표되는 Header를 선출하여 인사이트를 얻고, 이를 통해 솔루션을 추출했습니다. 이 과정을 통해 어떤 것을 원하고, 어떤 것에 애로사항을 느끼는지 추출할 수 있었습니다.</figcaption>
-                            </figure>
-                            <figure>
-                                <img class="img-process" src="images/진행과정/IDI 행동, 느낌.png" alt="Behavior 항목도 같은 방법으로 Affinity Diagram을 진행했습니다. 이 과정을 통해 구두로 진행한 인터뷰 답변으로부터 관련 서비스를 사용할 때 사용자들의 어떻게 행동하는지 추출할 수 있었습니다.">
-                                <figcaption>Behavior 항목도 같은 방법으로 Affinity Diagram을 진행했습니다. 이 과정을 통해 구두로 진행한 인터뷰 답변으로부터 관련 서비스를 사용할 때 사용자들의 어떻게 행동하는지 추출할 수 있었습니다.</figcaption>
+                                <figcaption>첫번째 참가자 답변에서 사용한 데이터클렌징과 같이,IDI 참여자 6명의 답변에서 각각 5개 항목을 추출하여 항목별로
+                                    그룹핑했습니다.</figcaption>
                             </figure>
 
+                            <h3 id="modeling-affinity">Affinity Diagram</h3>
+                            <p>Pain Point와 Needs를 그룹핑하여 대표 Header를 선출하고 인사이트를 도출했으며,
+                            Behavior 항목도 같은 방법으로 사용자 행동 패턴을 추출했습니다.</p>
+                            <figure>
+                                <img class="img-process" src="images/진행과정/Affinity Diagram.png"
+                                    alt="추출된 모든 항목에서 가장 중요한 Pain Point, Needs를 함께 묶어 Affinity Diagram을 진행했습니다. 먼저 비슷한 내용을 그룹핑하여 큰 그룹을 나누고 그 안에서 다시 그룹핑하여 세부 그룹을 만들었습니다. 최종적으로 형성된 각 그룹에서 가장 대표되는 Header를 선출하여 인사이트를 얻고, 이를 통해 솔루션을 추출했습니다. 이 과정을 통해 어떤 것을 원하고, 어떤 것에 애로사항을 느끼는지 추출할 수 있었습니다.">
+                                <figcaption>추출된 모든 항목에서 가장 중요한 Pain Point, Needs를 함께 묶어 Affinity Diagram을 진행했습니다. 먼저
+                                    비슷한 내용을 그룹핑하여 큰 그룹을 나누고 그 안에서 다시 그룹핑하여 세부 그룹을 만들었습니다. 최종적으로 형성된 각 그룹에서 가장 대표되는
+                                    Header를 선출하여 인사이트를 얻고, 이를 통해 솔루션을 추출했습니다. 이 과정을 통해 어떤 것을 원하고, 어떤 것에 애로사항을 느끼는지
+                                    추출할 수 있었습니다.</figcaption>
+                            </figure>
+                            <figure>
+                                <img class="img-process" src="images/진행과정/IDI 행동, 느낌.png"
+                                    alt="Behavior 항목도 같은 방법으로 Affinity Diagram을 진행했습니다. 이 과정을 통해 구두로 진행한 인터뷰 답변으로부터 관련 서비스를 사용할 때 사용자들의 어떻게 행동하는지 추출할 수 있었습니다.">
+                                <figcaption>Behavior 항목도 같은 방법으로 Affinity Diagram을 진행했습니다. 이 과정을 통해 구두로 진행한 인터뷰
+                                    답변으로부터 관련 서비스를 사용할 때 사용자들의 어떻게 행동하는지 추출할 수 있었습니다.</figcaption>
+                            </figure>
+
+                            <h3 id="modeling-persona">Persona</h3>
+                            <p>사용자들의 객관적 특성을 반영한 User Profile 작성을 거쳐 자료 탐색 성향 등을 바탕으로
+                            최종 2개의 퍼소나 그룹을 생성했습니다.</p>
                             <img class="img-main" src="images/장표/11.png" alt="">
                             <figure>
-                                <img class="img-process" src="images/진행과정/IDI 유저프로파일 최종.png" alt="Affinity Diagram을 통해 사용자들의 객관적인 특성을 반영하여 User Profile을 작성했습니다. 처음엔 Primary, Secondary, Tertiary를 작성했지만 타겟유저로서 Tertiary는 회의 끝에 삭제하고 Primary, Secondary로만 페르소나를 구성했습니다.">
-                                <figcaption>Affinity Diagram을 통해 사용자들의 객관적인 특성을 반영하여 User Profile을 작성했습니다. 처음엔 Primary, Secondary, Tertiary를 작성했지만 타겟유저로서 Tertiary는 회의 끝에 삭제하고 Primary, Secondary로만 페르소나를 구성했습니다.</figcaption>
+                                <img class="img-process" src="images/진행과정/IDI 유저프로파일 최종.png"
+                                    alt="Affinity Diagram을 통해 사용자들의 객관적인 특성을 반영하여 User Profile을 작성했습니다. 처음엔 Primary, Secondary, Tertiary를 작성했지만 타겟유저로서 Tertiary는 회의 끝에 삭제하고 Primary, Secondary로만 페르소나를 구성했습니다.">
+                                <figcaption>Affinity Diagram을 통해 사용자들의 객관적인 특성을 반영하여 User Profile을 작성했습니다. 처음엔
+                                    Primary, Secondary, Tertiary를 작성했지만 타겟유저로서 Tertiary는 회의 끝에 삭제하고 Primary,
+                                    Secondary로만 페르소나를 구성했습니다.</figcaption>
                             </figure>
                             <div class="image-grid-2col">
                                 <figure>
-                                    <img class="img-process" src="images/진행과정/퍼소나 프라이머리.png" alt="자료 탐색 성향 등의 특징 range를 양 극단에 표기하고 6명의 성향에 맞게 위치시켰습니다. 모여있는 유저를 그룹핑하여 최종적으로 2개의 퍼소나 그룹을 얻었습니다. ">
-                                    <figcaption>자료 탐색 성향 등의 특징 range를 양 극단에 표기하고 6명의 성향에 맞게 위치시켰습니다. 모여있는 유저를 그룹핑하여 최종적으로 2개의 퍼소나 그룹을 얻었습니다. </figcaption>
+                                    <img class="img-process" src="images/진행과정/퍼소나 프라이머리.png"
+                                        alt="자료 탐색 성향 등의 특징 range를 양 극단에 표기하고 6명의 성향에 맞게 위치시켰습니다. 모여있는 유저를 그룹핑하여 최종적으로 2개의 퍼소나 그룹을 얻었습니다. ">
+                                    <figcaption>자료 탐색 성향 등의 특징 range를 양 극단에 표기하고 6명의 성향에 맞게 위치시켰습니다. 모여있는 유저를 그룹핑하여
+                                        최종적으로 2개의 퍼소나 그룹을 얻었습니다. </figcaption>
                                 </figure>
                                 <figure>
                                     <img class="img-process" src="images/진행과정/퍼소나 세컨더리.png" alt="">
                                 </figure>
                             </div>
+
+                            <h3 id="modeling-journeymap">User Journey Map</h3>
+                            <p>퍼소나의 자료 정리 경향, 특징, 행동, 니즈와 페인포인트를 정리하여 각각 User Journey Map을 작성했으며,
+                            Primary와 Secondary 간 큰 차이가 없어 2개 퍼소나를 통합했습니다.</p>
                             <div class="image-grid-2col">
                                 <figure>
-                                    <img class="img-process" src="images/진행과정/퍼소나 특성 정리표.png" alt="퍼소나의 자료 정리 경향, 특징, 행동, 니즈와 페인포인트를 작성했습니다.">
+                                    <img class="img-process" src="images/진행과정/퍼소나 특성 정리표.png"
+                                        alt="퍼소나의 자료 정리 경향, 특징, 행동, 니즈와 페인포인트를 작성했습니다.">
                                     <figcaption>퍼소나의 자료 정리 경향, 특징, 행동, 니즈와 페인포인트를 작성했습니다.</figcaption>
                                 </figure>
+
                                 <figure>
-                                    <img class="img-process" src="images/진행과정/유저저니맵.png" alt="생성된 퍼소나 2개를 바탕으로 User Journey Map을 각각 작성했습니다. 이 과정에서 Primary와 Secondary의 Journey Map에 큰 차이가 보이지 않았기 때문에 2개의 퍼소나를 통합하게 되었습니다.">
-                                    <figcaption>생성된 퍼소나 2개를 바탕으로 User Journey Map을 각각 작성했습니다. 이 과정에서 Primary와 Secondary의 Journey Map에 큰 차이가 보이지 않았기 때문에 2개의 퍼소나를 통합하게 되었습니다.</figcaption>
+                                    <img class="img-process" src="images/진행과정/유저저니맵.png"
+                                        alt="생성된 퍼소나 2개를 바탕으로 User Journey Map을 각각 작성했습니다. 이 과정에서 Primary와 Secondary의 Journey Map에 큰 차이가 보이지 않았기 때문에 2개의 퍼소나를 통합하게 되었습니다.">
+                                    <figcaption>생성된 퍼소나 2개를 바탕으로 User Journey Map을 각각 작성했습니다. 이 과정에서 Primary와
+                                        Secondary의 Journey Map에 큰 차이가 보이지 않았기 때문에 2개의 퍼소나를 통합하게 되었습니다.</figcaption>
                                 </figure>
                             </div>
 
-                            <img class="img-main" src="images/장표/10.png" alt="">
-                            <figure>
-                                <img class="img-process" src="images/진행과정/HMW.png" alt="HMW(How Might We)세션을 주도하여 서비스에 대한 질문을 발산하고 그룹핑하여 Header 질문 17개를 추출했습니다.">
-                                <figcaption>HMW(How Might We)세션을 주도하여 서비스에 대한 질문을 발산하고 그룹핑하여 Header 질문 17개를 추출했습니다.</figcaption>
-                            </figure>
-                            <figure>
-                                <img class="img-process" src="images/진행과정/crazy8.png" alt="HMW에 이어 Crazy8 세션을 진행했습니다. HMW에서 발산한 각 질문에 대해 팀원 모두가 8개의 솔루션을 작성했습니다.">
-                                <figcaption>HMW에 이어 Crazy8 세션을 주도해 진행했습니다. HMW에서 발산한 각 질문에 대해 팀원 모두가 8개의 솔루션을 작성했습니다.</figcaption>
-                            </figure>
-                            <figure>
-                                <img class="img-process" src="images/진행과정/crazy8 항공뷰.png" alt="HMW, Crazy8 세션 결과">
-                                <figcaption>HMW, Crazy8 세션 결과</figcaption>
-                            </figure>
+                            <div id="strategy" class="project-section">
+                                <h2>UX 전략 도출</h2>
+                                <p>HMW 세션을 통해 17개의 핵심 질문을 추출하고 Crazy8으로 다양한 솔루션을 발산한 후,
+                                    User Needs, Technical Capability, Business Value를 종합 고려하여 최종 UX Strategy를 도출했습니다.
+                                </p>
 
-                            <img class="img-main" src="images/장표/12.png" alt="">
-                            <figure>
-                                <img class="img-process" src="images/진행과정/ux strategy.png" alt="끝없는 그룹핑과 치열한 토론과 쳐내는 과정을 거쳐 User Needs, Technical Capability, Business Value를 다각적으로 고려하여 최종적으로 UX Strategy를 도출했습니다.">
-                                <figcaption>끝없는 그룹핑과 치열한 토론과 쳐내는 과정을 거쳐 User Needs, Technical Capability, Business Value를 다각적으로 고려하여 최종적으로 UX Strategy를 도출했습니다.</figcaption>
-                            </figure>
+
+                                <img class="img-main" src="images/장표/10.png" alt="">
+                                <figure>
+                                    <img class="img-process" src="images/진행과정/HMW.png"
+                                        alt="HMW(How Might We)세션을 주도하여 서비스에 대한 질문을 발산하고 그룹핑하여 Header 질문 17개를 추출했습니다.">
+                                    <figcaption>HMW(How Might We)세션을 주도하여 서비스에 대한 질문을 발산하고 그룹핑하여 Header 질문 17개를 추출했습니다.
+                                    </figcaption>
+                                </figure>
+                                <figure>
+                                    <img class="img-process" src="images/진행과정/crazy8.png"
+                                        alt="HMW에 이어 Crazy8 세션을 진행했습니다. HMW에서 발산한 각 질문에 대해 팀원 모두가 8개의 솔루션을 작성했습니다.">
+                                    <figcaption>HMW에 이어 Crazy8 세션을 주도해 진행했습니다. HMW에서 발산한 각 질문에 대해 팀원 모두가 8개의 솔루션을
+                                        작성했습니다.</figcaption>
+                                </figure>
+                                <figure>
+                                    <img class="img-process" src="images/진행과정/crazy8 항공뷰.png"
+                                        alt="HMW, Crazy8 세션 결과">
+                                    <figcaption>HMW, Crazy8 세션 결과</figcaption>
+                                </figure>
+
+                                <img class="img-main" src="images/장표/12.png" alt="">
+                                <figure>
+                                    <img class="img-process" src="images/진행과정/ux strategy.png"
+                                        alt="끝없는 그룹핑과 치열한 토론과 쳐내는 과정을 거쳐 User Needs, Technical Capability, Business Value를 다각적으로 고려하여 최종적으로 UX Strategy를 도출했습니다.">
+                                    <figcaption>끝없는 그룹핑과 치열한 토론과 쳐내는 과정을 거쳐 User Needs, Technical Capability, Business
+                                        Value를 다각적으로 고려하여 최종적으로 UX Strategy를 도출했습니다.</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div id="solution" class="project-section">
+                            <h2>솔루션</h2>
+                            <p>AI 기반 자동 분류, 지능형 태깅, 맥락적 검색을 핵심으로 하는 BrainMate 서비스를 설계하여
+                                사용자 행동 학습을 통한 개인화된 아카이빙 경험을 제공하는 최종 솔루션을 완성했습니다.</p>
+                            <img class="img-main" src="images/장표/13.png" alt="">
+                            <img class="img-main" src="images/장표/14.png" alt="">
+                            <img class="img-main" src="images/장표/15.png" alt="">
+                            <img class="img-main" src="images/장표/16.png" alt="">
+                            <img class="img-main" src="images/장표/17.png" alt="">
+                        </div>
+
+                        <div class="project-navigation">
+                            <a href="starbucks.html" class="nav-project">
+                                <span>다음 프로젝트</span>
+                                <h3>스타벅스 App Redesign →</h3>
+                            </a>
                         </div>
                     </div>
-
-                    <div id="solution" class="project-section">
-                        <h2>Solution</h2>
-                        <img class="img-main" src="images/장표/13.png" alt="">
-                        <img class="img-main" src="images/장표/14.png" alt="">
-                        <img class="img-main" src="images/장표/15.png" alt="">
-                        <img class="img-main" src="images/장표/16.png" alt="">
-                        <img class="img-main" src="images/장표/17.png" alt="">
-                    </div>
-
-                    <div id="learning" class="project-section">
-                        <h2>Learning</h2>
-                        <p>이번 프로젝트를 통해 UX 리서치와 모델링, AI 도구 활용에 대한 깊은 이해를 얻었습니다. 특히 AI 기반 분류 및 추천 시스템 설계 경험을 통해 사용자 중심 디자인의 중요성을 다시 한번 깨달았습니다. 앞으로도 이러한 경험을 바탕으로 혁신적인 디지털 솔루션을 개발하는 데 기여하고 싶습니다.</p>
-                    </div>
-
-                    <div class="project-navigation">
-                        <a href="starbucks.html" class="nav-project">
-                            <span>다음 프로젝트</span>
-                            <h3>스타벅스 App Redesign →</h3>
-                        </a>
-                    </div>
-                </div>
             </section>
 
             <footer>

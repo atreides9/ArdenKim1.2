@@ -6,19 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 기반 프로젝트 | Sunmin Kim</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/dark-mode.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Prevent dark mode flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode-loading');
+                document.body.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    
+    <style>
+        /* Prevent flash during page load */
+        .dark-mode-loading {
+            background-color: #121212 !important;
+            color: #e0e0e0 !important;
+        }
+        
+        /* Smooth transitions for theme changes */
+        * {
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        
+        /* Disable transitions during page load to prevent flash */
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
 
-<body>
+<body class="preload">
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
             <a href="index.html" class="logo">Sunmin Kim.</a>
             <ul class="nav-links">
-                <li><a href="index.html#work">Projects</a></li>
+                <li><a href="index.html#work">Project</a></li>
                 <li><a href="index.html#about">About me</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
         </div>
     </nav>
 

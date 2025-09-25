@@ -2,8 +2,14 @@
 :root {
     /* Color System */
     --primary-50: #fef2f2;
+    --primary-100: #fed7d7;
+    --primary-200: #feb2b2;
+    --primary-300: #fc8181;
     --primary-500: #FF6B6B;
     --primary-600: #e53e3e;
+    --primary-700: #c53030;
+    --primary-800: #9b2c2c;
+    --primary-900: #742a2a;
     
     --secondary-50: #f0fdfa;
     --secondary-500: #4ECDC4;

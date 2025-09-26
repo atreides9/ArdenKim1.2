@@ -20,16 +20,14 @@ Thumbs.db
 *.backup
 *.tmp
 
-# Image files (but keep essential project images)
-*.png
-*.gif
-*.jpg
-*.jpeg
-*.webp
-*.svg
-!project-tile/*.png
-!project-tile/*.jpg
-!project-tile/*.jpeg
+# Allow essential project images for GitHub Pages
+# Only ignore potentially sensitive image files in specific directories
+# All project-related images should be committed for the website to work
+
+# If you have sensitive images, place them in these directories:
+/private-images/
+/sensitive/
+/personal-photos/
 
 # Video files
 *.mp4

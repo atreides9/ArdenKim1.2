@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Email copy functionality
 function copyEmail() {
-    const email = 'lovetung18@gmail.com';
+    const email = 'smkim.designer@gmail.com';
     const button = document.querySelector('.email-copy-btn');
     
     // Use modern clipboard API if available
@@ -278,7 +278,7 @@ function fallbackCopyText(text, button) {
         console.error('Failed to copy email: ', err);
         button.textContent = '복사 실패 ❌';
         setTimeout(() => {
-            button.innerHTML = 'lovetung18@gmail.com 📋';
+            button.innerHTML = 'smkim.designer@gmail.com 📋';
         }, 2000);
     }
     

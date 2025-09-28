@@ -767,12 +767,15 @@ body {
 .dark-mode .nav-project {
     background: var(--dark-bg-secondary);
     color: var(--dark-text-color);
-    border: 1px solid var(--dark-border-color);
+    border: 2px solid var(--dark-border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .nav-project:hover {
-    background: #3a3a3a;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    background: #404040;
+    border-color: var(--dark-accent-color);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    transform: translateY(-4px);
 }
 
 .dark-mode .nav-project span {

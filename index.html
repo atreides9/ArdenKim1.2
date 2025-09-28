@@ -16,10 +16,10 @@
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Prevent dark mode flash -->
     <script>
-        (function() {
+        (function () {
             const theme = localStorage.getItem('theme');
             if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark-mode-loading');
@@ -27,19 +27,19 @@
             }
         })();
     </script>
-    
+
     <style>
         /* Prevent flash during page load */
         .dark-mode-loading {
             background-color: #121212 !important;
             color: #e0e0e0 !important;
         }
-        
+
         /* Smooth transitions for theme changes */
         * {
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
         }
-        
+
         /* Disable transitions during page load to prevent flash */
         .preload * {
             transition: none !important;
@@ -83,8 +83,9 @@
         <div class="hero-content">
             <div class="intro-text">
                 <span href="#" class="greeting">안녕하세요,</span>
-                <h1 class="reveal-text">문제 해결 중심의<br>프로덕트 디자이너 김선민입니다</h1>
-                <p class="subtitle reveal-text-delay">데이터 기반 인사이트로 사용자 문제를 해결합니다.</p>
+                <h1 class="reveal-text">오늘의 아이디어로<br>내일의 경험을 설계하는<br>디자이너 김선민입니다.
+                </h1>
+                <p class="subtitle reveal-text-delay">복잡한 문제를 간단한 솔루션으로, 아이디어를 실제 경험으로 바꿉니다.</p>
                 <div class="hero-cta">
                     <a href="#work" class="primary-button">프로젝트 보기</a>
                 </div>
@@ -106,13 +107,13 @@
             <a href="brainmate.html" class="project-card-link">
                 <article class="project-card">
                     <div class="project-image">
-                        <img src="project-tile/brainmate_tile.png" alt="BrainMate: Ai based archiving service">
+                        <img src="project-tile/brainmate_tile.png"
+                            alt="BrainMate 프로젝트 - 직관적인 자료 탐색 서비스, UX 모델링과 IDI 연구">
                     </div>
                     <div class="project-info">
-                        <span class="project-category">#UX Modeling</span>
-                        <span class="project-category">#IDI</span>
+                        <span class="project-category">#In-Depth Interview</span>
                         <h3>BrainMate</h3>
-                        <p>자료 검색과 저장을 한 곳에서! 맞춤형 추천으로 자료 탐색 시간을 단축시킵니다.</p>
+                        <p>개인의 행동 패턴을 학습하여 자동으로 분류하고 맥락에 맞는 콘텐츠를 추천하는 지능형 아카이빙 서비스</p>
                         <span class="view-project">프로젝트 보기 <span class="arrow">→</span></span>
                     </div>
                 </article>
@@ -122,12 +123,12 @@
             <a href="starbucks.html" class="project-card-link">
                 <article class="project-card">
                     <div class="project-image">
-                        <img src="project-tile/starbucks_tile.png" alt="Starbucks App Redesign">
+                        <img src="project-tile/starbucks_tile.png" alt="스타벅스 앱 리디자인 - 디자인 시스템 제작, 프로토타입, UT 검증">
                     </div>
                     <div class="project-info">
-                        <span class="project-category">#App Redesign</span>
-                        <h3>스타벅스 App Redesign</h3>
-                        <p>디자인 시스템 제작. 모든 플로우 프로토타입 제작. UT를 통한 가설 검증</p>
+                        <span class="project-category">#Prototype</span>
+                        <h3>스타벅스 앱 리디자인</h3>
+                        <p>디자인 시스템 구축부터 실제 사용자 테스트까지, 스타벅스 앱 사이렌오더 리디자인 프로젝트</p>
                         <span class="view-project">프로젝트 보기 <span class="arrow">→</span></span>
                     </div>
                 </article>
@@ -137,13 +138,12 @@
             <a href="Aiprojects.html" class="project-card-link">
                 <article class="project-card">
                     <div class="project-image">
-                        <img src="project-tile/AIprojects_tile.png" alt="AI powered P">
+                        <img src="project-tile/AIprojects_tile.png" alt="AI Projects - AI를 활용한 빠른 MVP 개발과 출시 프로젝트">
                     </div>
                     <div class="project-info">
-                        <span class="project-category">#기획</span>
                         <span class="project-category">#MVP</span>
                         <h3>AI-Projects</h3>
-                        <p>AI를 활용한 프로젝트. 빠르게 MVP를 만들고 출시</p>
+                        <p>디자인에 AI를 활용할 수 있는 방법을 연구합니다. 빠른 MVP 개발과 출시를 목표로 합니다.</p>
                         <span class="view-project">프로젝트 보기 <span class="arrow">→</span></span>
                     </div>
                 </article>
@@ -163,15 +163,10 @@
         <div class="about-content">
             <div class="about-text">
                 <h2>About Me</h2>
-                <p class="bio">AI 시대, 휴먼터치의 중요성</p>
-                <p>과학적 사고와 디자인적 감각을 결합하여,
-                    데이터 기반의 의사결정으로 사용자 중심의 솔루션을 만들어갑니다.
-                    지속적인 학습을 통해 기존 방식에 안주하지 않고,
-                    미래지향적 관점에서 효율적인 접근법을 모색합니다.
-                    리소스가 제한된 환경에서도 가장 효율적인 방법을 찾아내
-                    비즈니스 관점에서 최적의 결과를 도출합니다.
-                    목표 달성을 위한 단계적 실행과 끊임없는 성장을 추구하며,
-                    의미 있는 변화를 만들어가는 프로덕트를 디자인하고자 합니다.
+                <p class="bio">"미래를 예측하는 가장 좋은 방법은 미래를 창조하는 것이다" - 피터 드러커</p>
+                <p>과학적 사고와 디자인적 감각을 결합하여, 데이터 기반의 의사결정으로 사용자 중심의 솔루션을 만들어갑니다.
+                    화학 전공에서 기른 체계적 분석력과 문제해결 능력을 바탕으로, 사용자의 니즈를 포착하고 아이디어를 구체적인 프로덕트로 구현합니다. 디자인과 AI에 대한 끊임없는 학습과 연구를 통해
+                    다가올 AGI 시대에 더 나은 사용자 경험을 만들어가는 디자이너가 되고자 합니다.
                 </p>
             </div>
 
@@ -197,10 +192,10 @@
             <div class="background">
                 <h3>경력 및 활동</h3>
                 <ul class="timeline">
-                      <li>
-                        <span class="date">2024.02-</span>
+                    <li>
+                        <span class="date">2024.01-</span>
                         <div class="timeline-content">
-                            <h4>AI Projects</h4>
+                            <h4>AI based Projects</h4>
                         </div>
                     </li>
                     <li>
@@ -212,7 +207,7 @@
                     <li>
                         <span class="date">2025.01-2025.05</span>
                         <div class="timeline-content">
-                            <h4>직관적인 자료탐색 서비스 BrainMate</h4>
+                            <h4>지능형 아카이빙 서비스 BrainMate</h4>
                         </div>
                     </li>
                     <li>
@@ -236,13 +231,13 @@
                     <li>
                         <span class="date">2022.07-2022.08</span>
                         <div class="timeline-content">
-                            <h4>아산재단 AER 기업가정신리뷰 참가</h4>
+                            <h4>아산재단 AER 기업가정신리뷰 컴피티션</h4>
                         </div>
                     </li>
                     <li>
                         <span class="date">2022.03-2022.10</span>
                         <div class="timeline-content">
-                            <h4>창업 동아리 팀 프로젝트 '첫 눈'</h4>
+                            <h4>국민대학교 창업 동아리 팀 프로젝트 '첫눈'</h4>
                         </div>
                     </li>
                     <li>
@@ -274,22 +269,24 @@
                     smkim.designer@gmail.com 📋
                 </button>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/arden-kim-12196628b/" class="social-link"
-                        target="_blank">
+                    <a href="https://www.linkedin.com/in/arden-kim-12196628b/" class="social-link" target="_blank">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                         LinkedIn
                     </a>
                     <a href="https://github.com/atreides9" class="social-link" target="_blank">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                         GitHub
                     </a>
                     <a href="https://www.notion.so/arden-kim" class="social-link" target="_blank">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+                            <path
+                                d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
                         </svg>
                         Notion
                     </a>
@@ -305,7 +302,7 @@
 
 
 
-    
+
     <footer>
         <p>© 2025 Sunmin Kim • Built with care</p>
     </footer>

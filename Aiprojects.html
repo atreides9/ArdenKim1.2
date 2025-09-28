@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,10 @@
     <link rel="stylesheet" href="./css/dark-mode.css">
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Prevent dark mode flash -->
     <script>
-        (function() {
+        (function () {
             const theme = localStorage.getItem('theme');
             if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark-mode-loading');
@@ -21,19 +22,19 @@
             }
         })();
     </script>
-    
+
     <style>
         /* Prevent flash during page load */
         .dark-mode-loading {
             background-color: #121212 !important;
             color: #e0e0e0 !important;
         }
-        
+
         /* Smooth transitions for theme changes */
         * {
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
         }
-        
+
         /* Disable transitions during page load to prevent flash */
         .preload * {
             transition: none !important;
@@ -61,7 +62,10 @@
     <div class="project-container">
         <aside class="in-page-nav">
             <ul>
-                <li><a href="#project-list">AI 프로젝트 목록</a></li>
+                <li><a href="#project-1">AI Persona 활용 IDI</a></li>
+                <li><a href="#project-2">Chrome 확장프로그램</a></li>
+                <li><a href="#project-3">AI 협업 시스템</a></li>
+                <li><a href="#project-4">독거노인 GPTs</a></li>
                 <li><a href="#results">성과</a></li>
             </ul>
         </aside>
@@ -74,11 +78,8 @@
                         <a href="index.html#work" class="back-link">← 홈으로</a>
                     </div>
                     <h1>AI Projects</h1>
-                    <p class="project-subtitle">AI를 활용한 다양한 프로젝트들을 통해 사용자의 문제를 해결하는 도구를 개발하고 배포합니다. 또한 AI를 활용해 디자이너의 작업 효율성에 기여할 수 있는 방법을 끊임없이 연구합니다. CLI툴을 통해 빠른 MVP 개발 및 아이디어를 실제 서비스로 구현하는 경험을 쌓고 있습니다.</p>
-                    
-                    <div class="project-image-hero">
-                        <img src="ai/hero.jpg" alt="AI 프로젝트 메인 화면">
-                    </div>
+                    <p class="project-subtitle">AI를 활용해 디자인 작업 효율성에 기여할 수 있는 방법을 끊임없이 연구합니다. LLM CLI를 활용해 빠른 MVP 개발 및
+                        아이디어를 실제 서비스로 구현하는 경험을 쌓고 있습니다. 기획-디자인-개발-배포 iteration을 통해 0 to 1 프로세스의 전반에 대한 이해를 쌓고있습니다</p>
                 </div>
             </section>
 
@@ -86,7 +87,7 @@
             <section class="project-details">
                 <div class="project-content">
                     <div class="project-overview">
-                        
+
                         <div class="project-specs">
                             <div class="spec-item">
                                 <h3>Role</h3>
@@ -94,79 +95,90 @@
                             </div>
                             <div class="spec-item">
                                 <h3>Duration</h3>
-                                <p>2024.01-</p>
+                                <p>2024.01-진행중</p>
                             </div>
                             <div class="spec-item">
                                 <h3>Tools</h3>
-                                <p>VSCode<br>Claude CLI<br>Git / Github<br>Vercel<br>Gemini</p>
+                                <p>VSCode<br>Claude CLI<br>Git, Github<br>Vercel<br>Gemini</p>
                             </div>
                         </div>
                     </div>
 
                     <div id="project-list" class="project-section">
-                        <h2>AI 프로젝트 목록</h2>
-                        <div class="sub-projects-grid">
-                            <div class="sub-project-card">
-                                <div class="sub-project-image">
-                                    <img src="./project1-thumb.jpg" alt="AI 기반 자료 검색 서비스 - 스마트 자료 검색 및 분류 시스템">
-                                </div>
-                                <div class="sub-project-info">
-                                    <h3>AI 기반 자료 검색 서비스</h3>
-                                    <p>AI를 활용한 스마트 자료 검색 및 분류 시스템</p>
-                                    <span class="project-status">개발 완료</span>
-                                </div>
-                            </div>
-                            <div class="sub-project-card">
-                                <div class="sub-project-image">
-                                    <img src="./project2-thumb.jpg" alt="맞춤형 추천 시스템 - 사용자 패턴 분석을 통한 개인화 추천 엔진">
-                                </div>
-                                <div class="sub-project-info">
-                                    <h3>맞춤형 추천 시스템</h3>
-                                    <p>사용자 패턴 분석을 통한 개인화 추천 엔진</p>
-                                    <span class="project-status">진행 중</span>
-                                </div>
-                            </div>
-                            <div class="sub-project-card">
-                                <div class="sub-project-image">
-                                    <img src="./project3-thumb.jpg" alt="AI 페르소나 생성기 - GPT 기반 사용자 페르소나 생성 및 분석 도구">
-                                </div>
-                                <div class="sub-project-info">
-                                    <h3>AI 페르소나 생성기</h3>
-                                    <p>GPT 기반 사용자 페르소나 생성 및 분석 도구</p>
-                                    <span class="project-status">기획 단계</span>
-                                </div>
-                            </div>
-                            <div class="sub-project-card">
-                                <div class="sub-project-image">
-                                    <img src="./project4-thumb.jpg" alt="Vibe Coding 도구 - 빠른 프로토타이핑을 위한 AI 코딩 어시스턴트">
-                                </div>
-                                <div class="sub-project-info">
-                                    <h3>Vibe Coding 도구</h3>
-                                    <p>빠른 프로토타이핑을 위한 AI 코딩 어시스턴트</p>
-                                    <span class="project-status">테스트 중</span>
-                                </div>
-                            </div>
+
+                        <div id="project-1" class="project-item">
+                            <h2>AI Persona를 활용한 사용자 리서치</h2>
+                            <p>175명 서베이를 기반으로 구축한 사용자 프로파일을 활용해 AI 페르소나를 생성하여 인뎁스 인터뷰를 진행했습니다. 실제 참가자 5명과 AI 페르소나의 답변을
+                                종합해 UX 모델링에 필요한 유의미한 인사이트를 도출할 수 있었습니다. 특화 서비스의 경우 적합한 참가자 모집이 어려운데, 사용자 프로파일 기반 AI
+                                페르소나가 리소스 제약 환경에서 효과적인 대안임을 확인했습니다.</p>
+                            <span class="project-status" data-status="완료">완료</span>
+                            <img class="img-main" src="ai/장표/AI projects 2.png"
+                                alt="AI Persona를 활용한 사용자 리서치 - GPT 기반 사용자 페르소나 생성">
+                        </div>
+
+                        <div class="project-divider"></div>
+
+                        <div id="project-2" class="project-item">
+                            <h2>Chrome 확장프로그램 제작</h2>
+                            <p>Claude Artifacts로 초기 아이디어를 구체화한 후 VSCode와 Claude CLI를 활용해 UI/UX를 반복 개선하여 Chrome 확장프로그램을
+                                개발하고 48시간 만에 승인받았습니다. 출시 후 실제 사용자 피드백을 바탕으로 다국어 지원 등을 추가하며 전체 프로덕트 라이프사이클을 경험했습니다. AI
+                                도구를 활용한 빠른 프로토타이핑부터 사용자 피드백 기반 개선까지, AI와 협업하는 디자인 방법론을 구축하여 현업에서 즉시 활용 가능한 워크플로우를
+                                습득했습니다.</p>
+                            <span class="project-status" data-status="완료">완료</span>
+                            <img class="img-main" src="ai/장표/AI projects 3.png"
+                                alt="Chrome 확장프로그램 제작 - 사용자 패턴 분석을 통한 개인화 추천 엔진">
+                        </div>
+
+                        <div class="project-divider"></div>
+
+                        <div id="project-3" class="project-item">
+                            <h2>AI cross-functional 협업 환경 구축</h2>
+                            <p>제품 구현 과정에서 개발 도메인 지식 부족으로 인한 커뮤니케이션 갭을 해결하기 위해 CTO 페르소나를 설계하여 GitHub, 로컬 파일과 연동해 전문 지식을
+                                습득했습니다. 마케팅, PM, 개발 리드, 디자인 멘토 등 다양한 stakeholder 페르소나를 반복 설계하면서 프롬프트 엔지니어링을 통한 토큰 효율성
+                                최적화에 집중했습니다. 최소 토큰으로 최대 인사이트를 확보하는 프롬프트 아키텍처를 구축하여 효율적인 cross-functional 협업 환경을 만들었습니다.
+                            </p>
+                            <span class="project-status" data-status="진행 중">진행 중</span>
+                            <img class="img-main" src="ai/장표/AI projects 3.png"
+                                alt="AI cross-functional 협업 환경 구축 - 프롬프트 엔지니어링으로 구축한 AI 협업 생태계">
+                            <figure>
+                                <img class="img-process" src="ai/ai-cross/head of marketing.png"
+                                    alt="마케팅 담당자 페르소나">
+                                <figcaption>마케팅 담당자 페르소나를 생성해 실제 기획 개발한 프로젝트 홍보를 위한 액션플랜 요청</figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="project-divider"></div>
+
+                        <div id="project-4" class="project-item">
+                            <h2>독거노인 말동무 및 심리상담 GPTs</h2>
+                            <p>사회적 고립감을 느끼는 독거노인을 위해, 일상적인 대화와 정서적 지원을 제공하는 인공지능 상담 서비스를 개발했습니다.</p>
+                            <span class="project-status" data-status="완료">완료</span>
+                            <img class="img-main" src="ai/GPTs chat.png"
+                                alt="독거노인을 위한 GPTs - GPT 기반 독거노인 말동무 및 심리상담 서비스">
+                            <img class="img-main" src="ai/GPTs.png"
+                                alt="독거노인 말동무 및 심리상담 GPTs - GPT 기반 독거노인 말동무 및 심리상담 서비스">
                         </div>
                     </div>
-
-                    <div id="results" class="project-section">
-                        <h2>성과</h2>
-                        <p>다양한 AI 도구를 활용하여 아이디어를 실제 서비스로 구현하는 사이클을 과정에서 배우고 있습니다. 특히 빠른 MVP 개발과 사용자 피드백 수집을 통해 제품 개발 역량을 향상시키고 있습니다.</p>
-                    </div>
-
-                    <div class="project-navigation">
-                        <a href="starbucks.html" class="nav-project prev">
-                            <span>이전 프로젝트</span>
-                            <h3>← 스타벅스 App Redesign</h3>
-                        </a>
-                        <a href="brainmate.html" class="nav-project">
-                            <span>다음 프로젝트</span>
-                            <h3>BrainMate →</h3>
-                        </a>
-                    </div>
                 </div>
-            </section>
-        </main>
+
+                <div id="results" class="project-section">
+                    <h2>성과</h2>
+                    <p>AI를 단순한 보조 도구를 넘어, 기획-디자인-개발-배포의 전 과정에 핵심적인 역할을 하는 파트너로 활용하는 능력을 입증했습니다. 리소스 제약 속에서 AI 페르소나로 리서치 대안을 찾는 문제 해결 능력, 48시간 만에 Chrome 확장 프로그램을 **실제로 구현하고 배포한 경험**, 그리고 출시 후 사용자 피드백을 반영해 개선하는 **iteration**을 통해 전체 프로덕트 라이프사이클을 주도했습니다. 또한, 여러 직군과의 협업 갭을 AI 페르소나로 해결하며 효율적인 cross-functional 협업 환경을 구축하는 등, 기술을 활용해 실질적인 비즈니스 문제를 해결하고 성과를 만들어내는 역량을 갖추었습니다.</p>
+                </div>
+
+                <div class="project-navigation">
+                    <a href="starbucks.html" class="nav-project prev">
+                        <span>이전 프로젝트</span>
+                        <h3>← 스타벅스 App Redesign</h3>
+                    </a>
+                    <a href="brainmate.html" class="nav-project">
+                        <span>다음 프로젝트</span>
+                        <h3>BrainMate →</h3>
+                    </a>
+                </div>
+    </div>
+    </section>
+    </main>
     </div>
 
     <footer>
@@ -175,4 +187,5 @@
 
     <script src="./script.js"></script>
 </body>
+
 </html>

@@ -509,3 +509,64 @@ body.dark-mode .theme-toggle:focus-visible {
     border-color: var(--dark-accent-primary);
     box-shadow: 0 0 0 4px rgba(255, 138, 138, 0.2);
 }
+
+/* Project Status Badge */
+.project-status {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: var(--space-3);
+    vertical-align: middle;
+}
+
+.project-status[data-status="완료"] {
+    background-color: var(--primary-100);
+    color: var(--primary-700);
+}
+
+.project-status[data-status="진행 중"] {
+    background-color: var(--secondary-100, #fff5e6); /* Fallback color */
+    color: var(--secondary-700, #996a13);      /* Fallback color */
+    animation: pulse-light 2s infinite;
+}
+
+/* Dark mode for status badges */
+body.dark-mode .project-status[data-status="완료"] {
+    background-color: var(--dark-accent-primary-translucent, rgba(80, 255, 172, 0.1));
+    color: var(--dark-accent-primary, #50ffac);
+}
+
+body.dark-mode .project-status[data-status="진행 중"] {
+    background-color: var(--dark-accent-secondary-translucent, rgba(255, 215, 138, 0.1));
+    color: var(--dark-accent-secondary, #ffd78a);
+    animation: pulse-dark 2s infinite;
+}
+
+/* Animation Keyframes */
+@keyframes pulse-light {
+  0% {
+    box-shadow: 0 0 0 0 rgba(153, 106, 19, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(153, 106, 19, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(153, 106, 19, 0);
+  }
+}
+
+@keyframes pulse-dark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 138, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(255, 215, 138, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 138, 0);
+  }
+}

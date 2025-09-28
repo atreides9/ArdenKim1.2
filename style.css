@@ -1423,3 +1423,16 @@ body.dark-mode .moon-icon {
 .project-details {
     background: var(--project-details-bg, inherit) !important;
 }
+
+/* Project item spacing and divider styles */
+.project-item {
+    margin: 2rem 0;
+}
+
+.project-divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 3rem auto;
+    width: 80%;
+    opacity: 0.5;
+}

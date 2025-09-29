@@ -348,8 +348,8 @@ class MouseFollowingProfile {
     updateImagePosition() {
         if (!this.isVisible) return;
         
-        this.profileImage.style.left = `${this.mouseX + 15}px`;
-        this.profileImage.style.top = `${this.mouseY + 15}px`;
+        this.profileImage.style.left = `${this.mouseX + 50}px`;
+        this.profileImage.style.top = `${this.mouseY + 50}px`;
     }
     
     // Throttle function for performance optimization

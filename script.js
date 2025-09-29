@@ -295,3 +295,79 @@ function showCopySuccess(button) {
         button.innerHTML = originalText;
     }, 2000);
 }
+
+// Mouse following profile image effect
+class MouseFollowingProfile {
+    constructor() {
+        this.profileImage = document.querySelector('.profile-image');
+        this.targetElements = document.querySelectorAll('.reveal-text, .subtitle');
+        this.isVisible = false;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.profileImage || this.targetElements.length === 0) return;
+        
+        // Only enable on desktop devices (non-touch)
+        if (!window.matchMedia('(hover: hover)').matches) return;
+        
+        // Add event listeners to target elements
+        this.targetElements.forEach(element => {
+            element.addEventListener('mouseenter', () => this.showImage());
+            element.addEventListener('mouseleave', () => this.hideImage());
+            element.addEventListener('mousemove', (e) => this.updatePosition(e));
+        });
+        
+        // Throttle mousemove for better performance
+        this.throttledUpdate = this.throttle(this.updateImagePosition.bind(this), 16);
+    }
+    
+    showImage() {
+        this.isVisible = true;
+        this.profileImage.style.opacity = '1';
+        this.profileImage.style.visibility = 'visible';
+    }
+    
+    hideImage() {
+        this.isVisible = false;
+        this.profileImage.style.opacity = '0';
+        this.profileImage.style.visibility = 'hidden';
+    }
+    
+    updatePosition(e) {
+        if (!this.isVisible) return;
+        
+        this.mouseX = e.clientX;
+        this.mouseY = e.clientY;
+        this.throttledUpdate();
+    }
+    
+    updateImagePosition() {
+        if (!this.isVisible) return;
+        
+        this.profileImage.style.left = `${this.mouseX}px`;
+        this.profileImage.style.top = `${this.mouseY}px`;
+    }
+    
+    // Throttle function for performance optimization
+    throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+}
+
+// Initialize mouse following profile effect
+document.addEventListener('DOMContentLoaded', () => {
+    new MouseFollowingProfile();
+});

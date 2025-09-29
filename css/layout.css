@@ -25,6 +25,24 @@
     display: block;
     margin-bottom: var(--space-4);
     font-weight: 500;
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: fixed;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--primary-500);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
 }
 
 .subtitle {
@@ -313,5 +331,12 @@ footer p {
     
     .nav-links a {
         font-size: var(--text-sm);
+    }
+    
+    .profile-image {
+        width: 75px;
+        height: 75px;
+        margin-left: var(--space-2);
+        display: none; /* Hide on mobile devices */
     }
 }

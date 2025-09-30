@@ -370,8 +370,7 @@ body.dark-mode {
 /* Figure Caption in Dark Mode */
 .dark-mode figcaption {
     color: #c0c0c0;
-    background: rgba(42, 42, 42, 0.8);
-    border: 1px solid var(--dark-border);
+    font-style: normal;
 }
 
 /* Scrollbar Styling for Dark Mode */

@@ -220,8 +220,6 @@ footer p {
 /* Project Details Layout */
 .project-details {
     padding: var(--space-20) var(--space-20);
-    background: var(--dark-bg-secondary);
-    color: var(--dark-text-primary);
 }
 
 .project-content {

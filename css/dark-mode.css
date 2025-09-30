@@ -120,7 +120,7 @@ body.dark-mode {
 /* Project Specifications */
 .dark-mode .project-specs {
     background: var(--dark-bg-primary);
-    border: 1px solid var(--dark-border);
+    border: none;
 }
 
 .dark-mode .spec-item h3 {
@@ -371,6 +371,17 @@ body.dark-mode {
 .dark-mode figcaption {
     color: #c0c0c0;
     font-style: normal;
+}
+
+/* Project Details - Remove border/background in dark mode */
+.dark-mode .project-details {
+    background: var(--dark-bg-primary) !important;
+    border: none !important;
+}
+
+/* Project Section - Remove border in dark mode */
+.dark-mode .project-section {
+    border-top: none !important;
 }
 
 /* Scrollbar Styling for Dark Mode */

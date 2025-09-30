@@ -184,11 +184,17 @@ body.dark-mode {
     border: 1px solid var(--dark-border);
 }
 
-/* BrainMate specific - img-main with subtle white shadow */
+/* Project images in dark mode - subtle default, prominent on hover */
 .dark-mode .img-main {
     border: none;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 
-                0 0 40px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode .img-main:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 
+                0 0 40px rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
 }
 
 /* Footer */

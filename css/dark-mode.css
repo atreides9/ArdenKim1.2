@@ -150,7 +150,7 @@ body.dark-mode {
 /* Project Navigation */
 .dark-mode .project-navigation {
     border-top: 1px solid var(--dark-border);
-    background: var(--dark-bg-secondary);
+    background: var(--dark-bg-primary);
 }
 
 .dark-mode .nav-project {

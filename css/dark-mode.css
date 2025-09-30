@@ -360,6 +360,13 @@ body.dark-mode {
     outline-offset: 2px;
 }
 
+/* Figure Caption in Dark Mode */
+.dark-mode figcaption {
+    color: #c0c0c0;
+    background: rgba(42, 42, 42, 0.8);
+    border: 1px solid var(--dark-border);
+}
+
 /* Scrollbar Styling for Dark Mode */
 .dark-mode::-webkit-scrollbar {
     width: 8px;

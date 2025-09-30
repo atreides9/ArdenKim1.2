@@ -546,6 +546,20 @@ body.dark-mode .project-status[data-status="진행 중"] {
     animation: pulse-dark 2s infinite;
 }
 
+/* Figure Caption Component */
+figcaption {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--neutral-50);
+    border: 1px solid var(--neutral-200);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    margin-top: -1px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
 /* Animation Keyframes */
 @keyframes pulse-light {
   0% {

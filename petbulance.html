@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>펫뷸런스: 더 나은 반려동물 긴급 이송 서비스 | Sunmin Kim</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/dark-mode.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Prevent dark mode flash -->
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode-loading');
+                document.body.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        /* Prevent flash during page load */
+        .dark-mode-loading {
+            background-color: #121212 !important;
+            color: #e0e0e0 !important;
+        }
+
+        /* Smooth transitions for theme changes */
+        * {
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+
+        /* Disable transitions during page load to prevent flash */
+        .preload * {
+            transition: none !important;
+        }
+    </style>
+</head>
+
+<body class="preload">
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="logo">Sunmin Kim.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#work">Project</a></li>
+                <li><a href="index.html#about">About me</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="project-container">
+        <aside class="in-page-nav">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#design">Design</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#learnings">Learnings</a></li>
+            </ul>
+        </aside>
+
+        <main class="project-main-content">
+            <!-- Project Hero -->
+            <section class="project-hero">
+                <div class="project-hero-content">
+                    <div class="project-meta">
+                        <a href="index.html#work" class="back-link">← 홈으로</a>
+                    </div>
+                    <h1>펫뷸런스</h1>
+                    <p class="project-subtitle">반려동물 응급 이송 서비스를 위한 디자인 연구</p>
+
+                    <div class="project-image-hero">
+                        <img src="petbulance/hero.png" alt="펫뷸런스 앱 메인 화면">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Details -->
+            <section class="project-details">
+                <div class="project-content">
+                    <div id="overview" class="project-overview">
+                        <h2>개요</h2>
+                        <p>펫뷸런스는 반려동물 응급 상황 발생 시, 빠르고 안전하게 동물을 병원으로 이송하는 서비스를 제공합니다. 본 프로젝트는 사용자 경험 개선을 위한 디자인 리서치 및 프로토타입 제작을 목표로 합니다.</p>
+
+                        <div class="project-specs">
+                            <div class="spec-item">
+                                <h3>Role</h3>
+                                <p>문제 정의 및 분석</p>
+                                <p>사용자 리서치</p>
+                                <p>솔루션 도출</p>
+                                <p>디자인 시스템 구축</p>
+                                <p>스크린 디자인 제작</p>
+                                <p>프로토타입 제작</p>
+                            </div>
+                            <div class="spec-item">
+                                <h3>Duration</h3>
+                                <p>개인 작업 : [시작일] - [종료일]</p>
+                            </div>
+                            <div class="spec-item">
+                                <h3>Tools</h3>
+                                <p>Figma</p>
+                                <p>Miro</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="problem" class="project-section">
+                        <h2>문제 정의</h2>
+                        <p>반려동물 응급 상황 발생 시, 보호자들이 겪는 어려움과 문제점을 정의합니다.</p>
+                        <li>긴급 이송 수단 부재</li>
+                        <li>병원 정보 부족</li>
+                        <li>이송 중 불안감</li>
+                    </div>
+
+                    <div id="solution" class="project-section">
+                        <h2>솔루션</h2>
+                        <p>정의된 문제를 해결하기 위한 솔루션을 제시합니다.</p>
+                        <li>실시간 이송 서비스</li>
+                        <li>가까운 응급 병원 안내</li>
+                        <li>이송 과정 투명성 제공</li>
+                    </div>
+
+                    <div id="process" class="project-section">
+                        <h2>프로세스</h2>
+                        <p>프로젝트 진행 과정에 대한 설명입니다.</p>
+                        <p>자세한 내용은 이미지 참고:</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 2.png" alt="펫뷸런스 프로젝트 프로세스 1">
+                            <figcaption>프로젝트 프로세스 1</figcaption>
+                        </figure>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 3.png" alt="펫뷸런스 프로젝트 프로세스 2">
+                            <figcaption>프로젝트 프로세스 2</figcaption>
+                        </figure>
+                    </div>
+
+                    <div id="design" class="project-section">
+                        <h2>디자인</h2>
+                        <p>주요 스크린 디자인 및 UI/UX 요소에 대한 설명입니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 4.png" alt="펫뷸런스 스크린 디자인 1">
+                            <figcaption>스크린 디자인 1</figcaption>
+                        </figure>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 5.png" alt="펫뷸런스 스크린 디자인 2">
+                            <figcaption>스크린 디자인 2</figcaption>
+                        </figure>
+                    </div>
+
+                    <div id="prototype" class="project-section">
+                        <h2>프로토타입</h2>
+                        <p>주요 기능에 대한 프로토타입 설명입니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 6.png" alt="펫뷸런스 프로토타입 1">
+                            <figcaption>프로토타입 1</figcaption>
+                        </figure>
+                    </div>
+
+                    <div id="results" class="project-section">
+                        <h2>결과</h2>
+                        <p>프로젝트를 통해 달성한 주요 성과 및 결과입니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 7.png" alt="펫뷸런스 결과 1">
+                            <figcaption>결과 1</figcaption>
+                        </figure>
+                    </div>
+
+                    <div id="learnings" class="project-section">
+                        <h2>Learnings</h2>
+                        <p>프로젝트를 통해 얻은 교훈과 향후 개선 방향에 대한 내용입니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 8.png" alt="펫뷸런스 Learning 1">
+                            <figcaption>Learning 1</figcaption>
+                        </figure>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/펫뷸런스 9.png" alt="펫뷸런스 Learning 2">
+                            <figcaption>Learning 2</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="project-navigation">
+                    <a href="aiprojects.html" class="nav-project prev">
+                        <span>이전 프로젝트</span>
+                        <h3>← AI-Projects</h3>
+                    </a>
+                    <a href="starbucks.html" class="nav-project">
+                        <span>다음 프로젝트</span>
+                        <h3>Starbucks App Redesign →</h3>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Sunmin Kim • All rights reserved</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

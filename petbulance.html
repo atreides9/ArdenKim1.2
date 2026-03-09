@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>펫뷸런스: 특수동물 응급 병원 매칭 서비스 | Sunmin Kim</title>
+    <meta name="description" content="디자인시스템 구축부터 디자인 토큰 설계, 158개 스크린디자인, 개발 QA까지. 특수동물 응급 병원 매칭 서비스 펫뷸런스 프로덕트 디자인.">
+    <meta property="og:title" content="펫뷸런스: 특수동물 응급 병원 매칭 서비스 | Sunmin Kim">
+    <meta property="og:description" content="디자인시스템 구축부터 출시 후 AI 퍼소나를 활용한 개선까지">
+    <meta property="og:image" content="petbulance/hero.png">
+    <meta property="og:type" content="article">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>S</text></svg>">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/dark-mode.css">
@@ -63,12 +69,26 @@
         <aside class="in-page-nav">
             <ul>
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#problem">Problem</a></li>
-                <li><a href="#solution">Solution</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#design">Design</a></li>
-                <li><a href="#prototype">Prototype</a></li>
-                <li><a href="#results">Results</a></li>
+                <li><a href="#foundation">Foundation</a></li>
+                <li><a href="#design-token">Design Token</a>
+                    <ul>
+                        <li><a href="#token-definition">토큰 정의</a></li>
+                        <li><a href="#token-automation">토큰 자동 수정 시스템</a></li>
+                    </ul>
+                </li>
+                <li><a href="#design-system">Design System</a>
+                    <ul>
+                        <li><a href="#variables">Variables 활용</a></li>
+                        <li><a href="#components">컴포넌트 및 모듈</a></li>
+                    </ul>
+                </li>
+                <li><a href="#screen-design">Screen Design</a>
+                    <ul>
+                        <li><a href="#screen-all">서비스 전체</a></li>
+                        <li><a href="#screen-core">핵심 기능</a></li>
+                    </ul>
+                </li>
+                <li><a href="#design-dev-qa">Design-Dev QA</a></li>
                 <li><a href="#learnings">Learnings</a></li>
             </ul>
         </aside>
@@ -81,7 +101,7 @@
                         <a href="index.html#work" class="back-link">← 홈으로</a>
                     </div>
                     <h1>펫뷸런스</h1>
-                    <p class="project-subtitle">반려동물 응급 이송 서비스를 위한 디자인 연구</p>
+                    <p class="project-subtitle">디자인시스템 구축부터 출시 후 AI 퍼소나를 활용한 개선까지</p>
 
                     <div class="project-image-hero">
                         <img src="petbulance/hero.png" alt="펫뷸런스 앱 메인 화면">
@@ -94,112 +114,115 @@
                 <div class="project-content">
                     <div id="overview" class="project-overview">
                         <h2>개요</h2>
-                        <p>펫뷸런스는 반려동물 응급 상황 발생 시, 빠르고 안전하게 동물을 병원으로 이송하는 서비스를 제공합니다. 본 프로젝트는 사용자 경험 개선을 위한 디자인 리서치 및 프로토타입 제작을 목표로 합니다.</p>
+                        <p>펫뷸런스는 특수동물 응급 상황 시 가까운 병원을 빠르게 매칭해주는 서비스입니다. 디자인시스템 구축부터 디자인 토큰 설계, 158개 스크린디자인 제작, 개발 QA까지 프로덕트 디자인 전반을 담당했습니다.</p>
 
                         <div class="project-specs">
                             <div class="spec-item">
                                 <h3>Role</h3>
-                                <p>문제 정의 및 분석</p>
-                                <p>사용자 리서치</p>
-                                <p>솔루션 도출</p>
-                                <p>디자인 시스템 구축</p>
-                                <p>스크린 디자인 제작</p>
-                                <p>프로토타입 제작</p>
+                                <p>디자인시스템 구축</p>
+                                <p>디자인 토큰 설계</p>
+                                <p>컴포넌트/모듈 제작</p>
+                                <p>스크린디자인 158개</p>
+                                <p>개발 QA</p>
                             </div>
                             <div class="spec-item">
                                 <h3>Duration</h3>
-                                <p>개인 작업 : [시작일] - [종료일]</p>
+                                <p>팀 프로젝트 : 2025.10 - 진행중</p>
                             </div>
                             <div class="spec-item">
                                 <h3>Tools</h3>
                                 <p>Figma</p>
-                                <p>Notion</p>
-                                <p>Github</p>
+                                <p>Tokens Studio</p>
+                                <p>GitHub</p>
                                 <p>Discord</p>
                             </div>
                         </div>
                     </div>
 
-                    <div id="problem" class="project-section">
-                        <h2>문제 정의</h2>
-                        <p>반려동물 응급 상황 발생 시, 보호자들이 겪는 어려움과 문제점을 정의합니다.</p>
-                        <li>병원 정보 부족</li>
-                        <li>병원 선택의 어려움</li>
-                    </div>
-
-                    <div id="solution" class="project-section">
-                        <h2>솔루션</h2>
-                        <p>정의된 문제를 해결하기 위한 솔루션을 제시합니다.</p>
-                        <li>가까운 응급 병원 안내</li>
-                    </div>
-
-                    <div id="process" class="project-section">
-                        <h2>프로세스</h2>
-                        <p>프로젝트 진행 과정에 대한 설명입니다.</p>
-                        <p>자세한 내용은 이미지 참고:</p>
+                    <div id="foundation" class="project-section">
+                        <h2>Foundation</h2>
+                        <p>서비스의 시각적 토대가 되는 Color, Typography, Iconography Foundation을 정립하여 일관된 디자인 언어를 구축했습니다.</p>
                         <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 2.png" alt="펫뷸런스 프로젝트 프로세스 1">
-                            <figcaption>프로젝트 프로세스 1</figcaption>
-                        </figure>
-                        <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 3.png" alt="펫뷸런스 프로젝트 프로세스 2">
-                            <figcaption>프로젝트 프로세스 2</figcaption>
+                            <img class="img-main" src="petbulance/장표/portfolio1.png" alt="펫뷸런스 Foundation - Color, Typography, Iconography 정립" loading="lazy">
                         </figure>
                     </div>
 
-                    <div id="design" class="project-section">
-                        <h2>디자인</h2>
-                        <p>주요 스크린 디자인 및 UI/UX 요소에 대한 설명입니다.</p>
+                    <div id="design-token" class="project-section">
+                        <h2>Design Token</h2>
+
+                        <h3 id="token-definition">토큰 정의</h3>
+                        <p>Color Primitive에서 Semantic Variables까지 체계적인 토큰 구조를 설계하고, Typography와 Sizing 토큰을 정의하여 디자인 시스템의 기반을 마련했습니다.</p>
                         <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 4.png" alt="펫뷸런스 스크린 디자인 1">
-                            <figcaption>스크린 디자인 1</figcaption>
+                            <img class="img-main" src="petbulance/장표/portfolio2.png" alt="펫뷸런스 디자인 토큰 정의 - Color, Typography, Sizing 토큰 구조" loading="lazy">
                         </figure>
+                        <div class="h3-separator"></div>
+
+                        <h3 id="token-automation">토큰 자동 수정 시스템</h3>
+                        <p>Tokens Studio와 GitHub를 연동하여 디자인 토큰 변경 사항이 자동으로 동기화되는 시스템을 구축했습니다. 디자이너와 개발자 간의 토큰 불일치 문제를 해결하고 작업 효율을 높였습니다.</p>
                         <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 5.png" alt="펫뷸런스 스크린 디자인 2">
-                            <figcaption>스크린 디자인 2</figcaption>
+                            <img class="img-main" src="petbulance/장표/portfolio3.png" alt="Tokens Studio와 GitHub 자동 동기화 시스템" loading="lazy">
                         </figure>
                     </div>
 
-                    <div id="prototype" class="project-section">
-                        <h2>프로토타입</h2>
-                        <p>주요 기능에 대한 프로토타입 설명입니다.</p>
+                    <div id="design-system" class="project-section">
+                        <h2>Design System</h2>
+
+                        <h3 id="variables">Variables 활용</h3>
+                        <p>Figma Variables를 활용하여 배리언츠 그룹을 체계적으로 관리하고, 디자인 작업의 효율성을 크게 높였습니다.</p>
                         <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 6.png" alt="펫뷸런스 프로토타입 1">
-                            <figcaption>프로토타입 1</figcaption>
+                            <img class="img-main" src="petbulance/장표/portfolio4.png" alt="Figma Variables로 배리언츠 그룹 관리 및 작업 효율 증대" loading="lazy">
+                        </figure>
+                        <div class="h3-separator"></div>
+
+                        <h3 id="components">컴포넌트 및 모듈</h3>
+                        <p>우선순위 기반으로 컴포넌트를 제작하고 모듈화하여 재사용 가능한 디자인 시스템을 완성했습니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/portfolio5.png" alt="우선순위 기반 컴포넌트 제작 및 모듈화" loading="lazy">
                         </figure>
                     </div>
 
-                    <div id="results" class="project-section">
-                        <h2>결과</h2>
-                        <p>프로젝트를 통해 달성한 주요 성과 및 결과입니다.</p>
+                    <div id="screen-design" class="project-section">
+                        <h2>Screen Design</h2>
+
+                        <h3 id="screen-all">서비스 전체</h3>
+                        <p>총 158개의 스크린, 8개의 주요 진입점으로 구성된 서비스 전체 화면을 설계했습니다.</p>
                         <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 7.png" alt="펫뷸런스 결과 1">
-                            <figcaption>결과 1</figcaption>
+                            <img class="img-main" src="petbulance/장표/portfolio6.png" alt="펫뷸런스 서비스 전체 스크린 - 158개 화면, 8개 진입점" loading="lazy">
+                        </figure>
+                        <div class="h3-separator"></div>
+
+                        <h3 id="screen-core">핵심 기능</h3>
+                        <p>온보딩부터 홈, 병원 검색, 병원 상세, 후기, 커뮤니티까지 사용자의 핵심 플로우를 설계했습니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/portfolio7.png" alt="핵심 기능 플로우 - 온보딩, 홈, 병원검색, 상세, 후기, 커뮤니티" loading="lazy">
+                        </figure>
+                    </div>
+
+                    <div id="design-dev-qa" class="project-section">
+                        <h2>Design-Dev QA</h2>
+                        <p>개발단과 긴밀하게 QA를 진행하며 엣지케이스를 보완하고, 디자인 의도가 정확히 구현될 수 있도록 커뮤니케이션했습니다.</p>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/portfolio8.png" alt="개발단과 QA 진행 - 엣지케이스 보완" loading="lazy">
+                        </figure>
+                        <figure>
+                            <img class="img-main" src="petbulance/장표/portfolio9.png" alt="Design-Dev QA 추가 사례" loading="lazy">
                         </figure>
                     </div>
 
                     <div id="learnings" class="project-section">
                         <h2>Learnings</h2>
-                        <p>프로젝트를 통해 얻은 교훈과 향후 개선 방향에 대한 내용입니다.</p>
-                        <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 8.png" alt="펫뷸런스 Learning 1">
-                            <figcaption>Learning 1</figcaption>
-                        </figure>
-                        <figure>
-                            <img class="img-main" src="petbulance/장표/펫뷸런스 9.png" alt="펫뷸런스 Learning 2">
-                            <figcaption>Learning 2</figcaption>
-                        </figure>
+                        <p>처음으로 실제 서비스를 위한 디자인시스템을 0부터 구축하며, 토큰 설계의 중요성과 개발자와의 협업 방식을 체득했습니다. Tokens Studio를 통한 자동화 시스템 구축 경험은 디자인-개발 간 싱크를 맞추는 효율적인 방법론을 배울 수 있는 계기가 되었습니다. 158개의 스크린을 제작하며 컴포넌트 재사용성과 일관성의 가치를 실감했으며, 개발 QA 과정에서 실제 구현과 디자인 사이의 간극을 좁히는 커뮤니케이션 역량을 키울 수 있었습니다.</p>
                     </div>
                 </div>
 
                 <div class="project-navigation">
-                    <a href="aiprojects.html" class="nav-project prev">
+                    <a href="brainmate.html" class="nav-project prev">
                         <span>이전 프로젝트</span>
-                        <h3>← AI-Projects</h3>
+                        <h3>← BrainMate</h3>
                     </a>
                     <a href="starbucks.html" class="nav-project">
                         <span>다음 프로젝트</span>
-                        <h3>Starbucks App Redesign →</h3>
+                        <h3>스타벅스 App Redesign →</h3>
                     </a>
                 </div>
             </section>

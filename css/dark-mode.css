@@ -379,6 +379,63 @@ body.dark-mode {
     font-style: normal;
 }
 
+/* ============================================================
+   VIBRANT REDESIGN — Dark Mode Mappings for New Components
+   ============================================================ */
+
+/* Status Indicator */
+.dark-mode .status-indicator {
+    background: rgba(77, 186, 113, 0.12);
+    color: #4dba71;
+}
+
+.dark-mode .status-dot {
+    background: #4dba71;
+}
+
+@keyframes statusPulseDark {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(77, 186, 113, 0.5); }
+    50%       { box-shadow: 0 0 0 6px rgba(77, 186, 113, 0); }
+}
+
+.dark-mode .status-dot {
+    animation: statusPulseDark 2.5s ease-in-out infinite;
+}
+
+/* Hero Badges */
+.dark-mode .badge {
+    background: var(--dark-bg-secondary);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .badge:hover {
+    background: var(--dark-bg-elevated);
+    border-color: var(--dark-accent-primary);
+}
+
+/* Project Card Number */
+.dark-mode .project-card-number {
+    color: var(--dark-text-primary);
+}
+
+/* Scroll Progress Bar */
+.dark-mode #scroll-progress {
+    opacity: 0.8;
+}
+
+/* Nav Scrolled in Dark Mode */
+.dark-mode .nav-container.nav-scrolled {
+    background: rgba(18, 18, 18, 0.98) !important;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+/* Contact Decorative Text — gradient already handles dark mode */
+.dark-mode .contact-deco-text {
+    opacity: 0.9;
+}
+
 /* Project Details - Remove border/background in dark mode */
 .dark-mode .project-details {
     background: var(--dark-bg-primary) !important;

@@ -371,3 +371,159 @@ class MouseFollowingProfile {
 document.addEventListener('DOMContentLoaded', () => {
     new MouseFollowingProfile();
 });
+
+// ============================================================
+// VIBRANT REDESIGN — "통통 튀는" Interaction Modules
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- 1. Staggered Hero Entrance Animations ---
+    function initHeroAnimations() {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (reducedMotion) {
+            // Reveal all hero elements immediately, no animation
+            [
+                '.status-indicator',
+                '.greeting',
+                '.reveal-text',
+                '.reveal-text-delay',
+                '.badge'
+            ].forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    el.classList.add('js-revealed', 'animate-in');
+                });
+            });
+            return;
+        }
+
+        const schedule = [
+            { selector: '.status-indicator', delay: 100,  action: 'reveal' },
+            { selector: '.greeting',         delay: 250,  action: 'reveal' },
+            { selector: '.reveal-text',      delay: 400,  action: 'class' },
+            { selector: '.reveal-text-delay',delay: 600,  action: 'class' },
+        ];
+
+        schedule.forEach(({ selector, delay, action }) => {
+            const el = document.querySelector(selector);
+            if (!el) return;
+            setTimeout(() => {
+                if (action === 'class') {
+                    el.classList.add('js-revealed');
+                } else {
+                    el.classList.add('js-revealed');
+                }
+            }, delay);
+        });
+
+        // Stagger badge animations individually
+        document.querySelectorAll('.badge').forEach((badge, index) => {
+            setTimeout(() => {
+                badge.classList.add('animate-in');
+            }, 750 + (index * 110));
+        });
+    }
+
+    initHeroAnimations();
+
+    // --- 2. Scroll Progress Bar ---
+    function initScrollProgress() {
+        const progressBar = document.getElementById('scroll-progress');
+        if (!progressBar) return;
+
+        const updateProgress = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = `${Math.min(progress, 100)}%`;
+            progressBar.setAttribute('aria-valuenow', Math.round(progress));
+        };
+
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+    }
+
+    initScrollProgress();
+
+    // --- 3. Nav Scroll Transform ---
+    function initNavScrollTransform() {
+        const nav = document.querySelector('.nav-container');
+        if (!nav) return;
+
+        const handleScroll = () => {
+            if (window.scrollY > 60) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+    }
+
+    initNavScrollTransform();
+
+    // --- 4. Magnetic Button Effect ---
+    function initMagneticButtons() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (!window.matchMedia('(hover: hover)').matches) return;
+
+        document.querySelectorAll('.primary-button').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const deltaX = (e.clientX - centerX) * 0.28;
+                const deltaY = (e.clientY - centerY) * 0.28;
+
+                btn.style.setProperty('--mx', deltaX);
+                btn.style.setProperty('--my', deltaY);
+                btn.classList.add('magnetic-active');
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.setProperty('--mx', 0);
+                btn.style.setProperty('--my', 0);
+                btn.classList.remove('magnetic-active');
+            });
+        });
+    }
+
+    initMagneticButtons();
+
+    // --- 5. 3D Card Tilt on Mousemove ---
+    function initCardTilt() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (!window.matchMedia('(hover: hover)').matches) return;
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+
+                const tiltX = (y - 0.5) * -7;
+                const tiltY = (x - 0.5) * 7;
+
+                card.style.transform = `
+                    perspective(900px)
+                    rotateX(${tiltX}deg)
+                    rotateY(${tiltY}deg)
+                    translateY(-6px)
+                    scale(1.01)
+                `;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    initCardTilt();
+
+});

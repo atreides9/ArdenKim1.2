@@ -69,6 +69,19 @@
     --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Spring / Bounce Easing */
+    --spring-easing: cubic-bezier(.34, 1.56, .64, 1);
+    --spring-easing-subtle: cubic-bezier(.34, 1.3, .64, 1);
+
+    /* Vibrant Card Accent Colors */
+    --card-accent-1: #FF6B6B;
+    --card-accent-2: #4ECDC4;
+    --card-accent-3: #FFE566;
+    --card-accent-4: #C9B8FF;
+
+    /* Warm Background */
+    --bg-warm: #F7F3EE;
 }
 
 /* CSS Reset */

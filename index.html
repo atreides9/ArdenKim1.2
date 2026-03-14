@@ -16,12 +16,13 @@
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/dark-mode.css">
+    <link rel="stylesheet" href="./css/grain.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600&family=DM+Serif+Display&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Prevent dark mode flash -->
     <script>
@@ -50,11 +51,39 @@
         .preload * {
             transition: none !important;
         }
+
+        /* Hero text language swap animation */
+        .hero-swap-text {
+            transition: opacity 600ms ease-in-out, transform 600ms ease-in-out;
+        }
+        .hero-swap-text.swap-out {
+            opacity: 0 !important;
+            transform: translateY(-12px) !important;
+        }
+        .hero-swap-text.swap-in {
+            opacity: 0 !important;
+            transform: translateY(12px) !important;
+            transition: none !important;
+        }
+        .hero-h1-ko {
+            font-family: 'Noto Serif KR', serif !important;
+        }
+        .hero-h1-en {
+            font-family: Georgia, 'Times New Roman', serif !important;
+        }
     </style>
 </head>
 
 
 <body id="top" class="preload">
+    <!-- Grain texture SVG filter -->
+    <svg style="display:none">
+        <filter id="grain-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
+    </svg>
+
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
@@ -86,6 +115,8 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
+        <div class="blur-blob blur-blob--lg blur-blob--coral blur-blob--top-right"></div>
+        <div class="blur-blob blur-blob--md blur-blob--teal blur-blob--bottom-left"></div>
         <div class="hero-content">
             <div class="intro-text">
                 <div class="greeting">
@@ -110,6 +141,7 @@
 
     <!-- Work Section -->
     <section id="work" class="work-section">
+        <span class="section-label-rotated">Projects</span>
         <h2>Project</h2>
         <div class="project-grid">
             <!-- Project 1 -->
@@ -184,6 +216,8 @@
 
     <!-- About Section -->
     <section id="about" class="about-section">
+        <span class="section-label-rotated">About</span>
+        <div class="blur-blob blur-blob--md blur-blob--neutral blur-blob--top-right"></div>
         <div class="about-content">
             <div class="about-text">
                 <h2>About Me</h2>
@@ -325,6 +359,105 @@
     </footer>
 
     <script src="./script.js"></script>
+    <script>
+    (function () {
+        var h1 = document.querySelector('.hero-section h1');
+        var subtitle = document.querySelector('.hero-section .subtitle');
+        if (!h1 || !subtitle) return;
+
+        var states = [
+            {
+                h1: 'AI로 효율을 높이고<br>데이터로 경험을 설계하는<br>디자이너 김선민입니다.',
+                sub: '시스템 자동화, 데이터 기반 의사결정, 빠른 실행력으로 제품을 빌드합니다.',
+                font: 'hero-h1-ko'
+            },
+            {
+                h1: 'Driving efficiency with AI,<br>designing experiences with data.<br>I\'m Sunmin Kim.',
+                sub: 'I build products through system automation, data-driven decisions, and rapid execution.',
+                font: 'hero-h1-en'
+            }
+        ];
+        var current = 0;
+
+        function init() {
+            // Wait for reveal animations to finish (1s + 0.3s delay)
+            setTimeout(function () {
+                // Remove animation classes so CSS transitions can take over
+                h1.classList.remove('reveal-text');
+                subtitle.classList.remove('reveal-text-delay');
+
+                // Measure both states to fix container height
+                fixHeight();
+
+                // Add transition class + initial font
+                h1.classList.add('hero-swap-text', states[0].font);
+                subtitle.classList.add('hero-swap-text');
+
+                // Begin cycling after hold time
+                setTimeout(cycle, 3000);
+            }, 1500);
+        }
+
+        function fixHeight() {
+            var maxH1 = 0, maxSub = 0;
+            states.forEach(function (s) {
+                h1.innerHTML = s.h1;
+                subtitle.textContent = s.sub;
+                h1.classList.remove('hero-h1-ko', 'hero-h1-en');
+                h1.classList.add(s.font);
+                maxH1 = Math.max(maxH1, h1.offsetHeight);
+                maxSub = Math.max(maxSub, subtitle.offsetHeight);
+            });
+            // Restore initial state
+            h1.innerHTML = states[0].h1;
+            subtitle.textContent = states[0].sub;
+            h1.classList.remove('hero-h1-ko', 'hero-h1-en');
+            h1.style.minHeight = maxH1 + 'px';
+            subtitle.style.minHeight = maxSub + 'px';
+        }
+
+        function cycle() {
+            // Phase 1: fade out + drift up
+            h1.classList.add('swap-out');
+            subtitle.classList.add('swap-out');
+
+            setTimeout(function () {
+                var next = (current + 1) % states.length;
+
+                // Swap content + font
+                h1.innerHTML = states[next].h1;
+                subtitle.textContent = states[next].sub;
+                h1.classList.remove(states[current].font);
+                h1.classList.add(states[next].font);
+                current = next;
+
+                // Phase 2: position below (instant, transition disabled by .swap-in)
+                h1.classList.remove('swap-out');
+                subtitle.classList.remove('swap-out');
+                h1.classList.add('swap-in');
+                subtitle.classList.add('swap-in');
+
+                // Phase 3: fade in (re-enable transition next frame)
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        h1.classList.remove('swap-in');
+                        subtitle.classList.remove('swap-in');
+                    });
+                });
+
+                // Schedule next cycle: fade-in 600ms + hold 3000ms
+                setTimeout(cycle, 600 + 3000);
+            }, 600);
+        }
+
+        // Start after all fonts are loaded
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(init);
+        } else {
+            window.addEventListener('load', init);
+        }
+    })();
+    </script>
 </body>
 
 </html>

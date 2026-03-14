@@ -1424,3 +1424,389 @@ body.dark-mode .moon-icon {
     width: 80%;
     opacity: 0.5;
 }
+
+
+/* ============================================================
+   VIBRANT REDESIGN — "통통 튀는" UI
+   iamrob.in 레퍼런스 기반 Spring 애니메이션 + 마이크로 인터랙션
+   index.html 전용 (서브 페이지 미영향)
+   ============================================================ */
+
+/* --- 1. Global Background --- */
+body {
+    background-color: var(--bg-warm, #F7F3EE);
+}
+
+.nav-container {
+    background: rgba(247, 243, 238, 0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: padding 0.4s var(--spring-easing, ease),
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+/* --- 2. Scroll Progress Indicator --- */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--card-accent-1, #FF6B6B),
+        var(--card-accent-3, #FFE566),
+        var(--card-accent-2, #4ECDC4)
+    );
+    z-index: 1001;
+    transition: width 0.05s linear;
+    border-radius: 0 2px 2px 0;
+    pointer-events: none;
+}
+
+/* --- 3. Availability Status Indicator --- */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2d8a4e;
+    background: rgba(45, 138, 78, 0.1);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s var(--spring-easing, ease);
+}
+
+.status-indicator.js-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #2d8a4e;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(45, 138, 78, 0.5); }
+    50%       { box-shadow: 0 0 0 6px rgba(45, 138, 78, 0); }
+}
+
+/* --- 4. Hero Skill Badges --- */
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 7px 15px;
+    border-radius: 100px;
+    background: white;
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s var(--spring-easing, ease),
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    cursor: default;
+    user-select: none;
+    color: var(--text-color, #1a1a1a);
+}
+
+.badge.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.badge:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.badge[data-type="design"] { border-color: rgba(255, 107, 107, 0.35); }
+.badge[data-type="ai"]     { border-color: rgba(78, 205, 196, 0.4); }
+.badge[data-type="product"]{ border-color: rgba(201, 184, 255, 0.5); }
+.badge[data-type="location"]{ border-color: rgba(255, 229, 102, 0.6); }
+
+/* --- 5. Hero Text JS-Controlled Reveal --- */
+.reveal-text,
+.reveal-text-delay {
+    animation: none !important;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s var(--spring-easing, ease);
+    display: block;
+}
+
+.reveal-text.js-revealed,
+.reveal-text-delay.js-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* greeting 텍스트 (inline flex에서 block으로) */
+.greeting {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s var(--spring-easing, ease);
+}
+
+.greeting.js-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 6. Project Cards: Number + Accent Strip + 3D Tilt --- */
+.project-card {
+    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.5s var(--spring-easing, ease),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease !important;
+    overflow: visible !important;
+}
+
+.project-card-number {
+    position: absolute;
+    top: -20px;
+    right: 18px;
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.1;
+    color: var(--card-num-color, #222222);
+    letter-spacing: -5px;
+    pointer-events: none;
+    z-index: 2;
+    font-family: 'Albert Sans', 'Pretendard', sans-serif;
+    transition: opacity 0.3s ease;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.project-card:hover .project-card-number {
+    opacity: 0.22;
+}
+
+/* Colored accent strip at top */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--card-accent-color, var(--card-accent-1, #FF6B6B));
+    border-radius: 16px 16px 0 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--spring-easing, ease);
+    z-index: 3;
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Per-card color assignments */
+.project-card-link:nth-child(1) .project-card {
+    --card-accent-color: var(--card-accent-1, #FF6B6B);
+    --card-num-color: var(--card-accent-1, #FF6B6B);
+}
+.project-card-link:nth-child(2) .project-card {
+    --card-accent-color: var(--card-accent-2, #4ECDC4);
+    --card-num-color: var(--card-accent-2, #4ECDC4);
+}
+.project-card-link:nth-child(3) .project-card {
+    --card-accent-color: var(--card-accent-3, #FFE566);
+    --card-num-color: #b8a200;
+}
+.project-card-link:nth-child(4) .project-card {
+    --card-accent-color: var(--card-accent-4, #C9B8FF);
+    --card-num-color: var(--card-accent-4, #C9B8FF);
+}
+
+/* Override default hover — JS handles 3D tilt transform */
+.project-card:hover {
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.14),
+                0 8px 16px rgba(0, 0, 0, 0.08) !important;
+    border-color: transparent !important;
+}
+
+/* --- 7. Magnetic Primary Button --- */
+.primary-button {
+    position: relative;
+    transition: transform 0.35s var(--spring-easing, ease),
+                box-shadow 0.3s ease !important;
+    will-change: transform;
+}
+
+.primary-button.magnetic-active {
+    transform: translate(calc(var(--mx, 0) * 1px), calc(var(--my, 0) * 1px));
+}
+
+.primary-button:hover {
+    transform: translateY(-4px) scale(1.03) !important;
+}
+
+.primary-button:active {
+    transform: scale(0.95) !important;
+    transition-duration: 0.1s !important;
+}
+
+/* --- 8. Nav Scroll Transform --- */
+.nav-container.nav-scrolled {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.nav-container.nav-scrolled .logo {
+    font-size: 1.25rem;
+    transition: font-size 0.4s var(--spring-easing, ease);
+}
+
+/* --- 9. Contact Section Decorative Text --- */
+.contact-deco-text {
+    display: block;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 800;
+    background: linear-gradient(
+        135deg,
+        var(--card-accent-1, #FF6B6B) 0%,
+        var(--card-accent-4, #C9B8FF) 50%,
+        var(--card-accent-2, #4ECDC4) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 5s ease infinite;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Contact section: center align deco text */
+.contact-section .contact-content {
+    text-align: center;
+}
+
+/* --- 10. Scroll-triggered reveal elements (sections) --- */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s var(--spring-easing, ease);
+}
+
+.reveal-element.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 11. Dark Mode Overrides for New Components --- */
+body.dark-mode {
+    background-color: var(--dark-bg-primary, #121212) !important;
+}
+
+body.dark-mode .nav-container {
+    background: rgba(18, 18, 18, 0.95) !important;
+    border-bottom: 1px solid var(--dark-border, #3a3a3a);
+}
+
+body.dark-mode .nav-container.nav-scrolled {
+    background: rgba(18, 18, 18, 0.98) !important;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--dark-border, #3a3a3a);
+}
+
+body.dark-mode .status-indicator {
+    background: rgba(77, 186, 113, 0.12);
+    color: #4dba71;
+}
+
+body.dark-mode .status-dot {
+    background: #4dba71;
+}
+
+body.dark-mode .badge {
+    background: var(--dark-bg-secondary, #1e1e1e);
+    border-color: var(--dark-border, #3a3a3a);
+    color: var(--dark-text-primary, #ffffff);
+}
+
+body.dark-mode .badge:hover {
+    background: var(--dark-bg-elevated, #2d2d2d);
+    border-color: var(--dark-accent-primary, #ff8a8a);
+}
+
+body.dark-mode .project-card-number {
+    color: var(--dark-text-primary, #ffffff);
+}
+
+body.dark-mode #scroll-progress {
+    opacity: 0.8;
+}
+
+body.dark-mode .reveal-text,
+body.dark-mode .reveal-text-delay {
+    color: var(--dark-text-primary, #ffffff);
+}
+
+/* --- 12. prefers-reduced-motion 접근성 --- */
+@media (prefers-reduced-motion: reduce) {
+    .status-dot { animation: none !important; }
+    .contact-deco-text { animation: none !important; }
+    #scroll-progress { transition: none !important; }
+    .badge { transition: none !important; }
+    .badge.animate-in { opacity: 1; transform: none; }
+    .status-indicator.js-revealed { opacity: 1; transform: none; }
+    .greeting.js-revealed { opacity: 1; transform: none; }
+    .reveal-text.js-revealed,
+    .reveal-text-delay.js-revealed { opacity: 1; transform: none; }
+    .project-card { transition: box-shadow 0.2s ease !important; }
+    .project-card::before { transition: none !important; }
+    .primary-button { transition: box-shadow 0.2s ease !important; }
+}
+
+/* --- 13. Mobile Responsive for New Components --- */
+@media (max-width: 768px) {
+    .hero-badges { gap: 0.5rem; }
+    .badge { font-size: 0.8rem; padding: 6px 12px; }
+    .status-indicator { font-size: 0.8rem; padding: 5px 12px; }
+    .contact-deco-text { font-size: clamp(2rem, 10vw, 3.5rem); }
+    .project-card-number { font-size: 3.5rem; }
+}
